@@ -2,7 +2,7 @@
 
 Simulador de entrevistas técnicas con IA local. El sistema presenta 3 preguntas adaptativas (junior · mid · senior), evalúa las respuestas con embeddings semánticos y un LLM local (Ollama), y entrega retroalimentación detallada al finalizar la entrevista.
 
-Proyecto académico — Universidad.
+Proyecto académico — Universidad ECCI.
 
 ---
 
