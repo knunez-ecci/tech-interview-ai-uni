@@ -1,0 +1,120 @@
+2026-05-27 18:48:52 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 18:48:53 [ERROR] main: No se pudo conectar a la base de datos: (psycopg.OperationalError) connection failed: connection to server at "127.0.0.1", port 5432 failed: FATAL:  role "postgres" does not exist
+Multiple connection attempts failed. All failures were:
+- host: 'localhost', port: 5432, hostaddr: '::1': connection failed: connection to server at "::1", port 5432 failed: FATAL:  role "postgres" does not exist
+- host: 'localhost', port: 5432, hostaddr: '127.0.0.1': connection failed: connection to server at "127.0.0.1", port 5432 failed: FATAL:  role "postgres" does not exist
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-27 18:49:29 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 18:49:29 [ERROR] main: No se pudo conectar a la base de datos: (psycopg.OperationalError) connection failed: connection to server at "127.0.0.1", port 5432 failed: FATAL:  role "postgres" does not exist
+Multiple connection attempts failed. All failures were:
+- host: 'localhost', port: 5432, hostaddr: '::1': connection failed: connection to server at "::1", port 5432 failed: FATAL:  role "postgres" does not exist
+- host: 'localhost', port: 5432, hostaddr: '127.0.0.1': connection failed: connection to server at "127.0.0.1", port 5432 failed: FATAL:  role "postgres" does not exist
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-27 18:49:50 [INFO] main: Modelo de embeddings listo.
+2026-05-27 18:50:01 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 18:50:02 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 18:50:02 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 18:50:08 [INFO] main: Modelo de embeddings listo.
+2026-05-27 18:50:35 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 18:50:37 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 18:50:37 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 18:50:43 [INFO] main: Modelo de embeddings listo.
+2026-05-27 18:53:36 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 18:53:37 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 18:53:37 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 18:53:43 [INFO] main: Modelo de embeddings listo.
+2026-05-27 18:54:06 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 18:54:06 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 18:54:06 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 18:54:13 [INFO] main: Modelo de embeddings listo.
+2026-05-27 18:54:13 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 18:54:13 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 18:54:19 [INFO] main: Modelo de embeddings listo.
+2026-05-27 18:55:18 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 18:55:21 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 18:55:21 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 18:55:28 [INFO] main: Modelo de embeddings listo.
+2026-05-27 18:59:09 [INFO] main: Entrevista iniciada — usuario=knunez categoría=backend
+2026-05-27 19:12:17 [INFO] main: Entrevista iniciada — usuario=knunez categoría=backend
+2026-05-27 19:16:20 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:16:21 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:16:21 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:16:28 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:22:27 [INFO] main: Entrevista iniciada — usuario=knunez categoría=backend
+2026-05-27 19:30:23 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:30:24 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:30:24 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:30:32 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:30:33 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:30:33 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:30:39 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:30:56 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:30:57 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:30:57 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:31:03 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:31:07 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:31:07 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:31:07 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:31:13 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:36:25 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:36:28 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:36:28 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:36:36 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:37:17 [INFO] main: Entrevista iniciada — usuario=Entrevistado1 categoría=backend
+2026-05-27 19:40:27 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:40:29 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:40:29 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:40:42 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:40:43 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:40:43 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:40:51 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:41:07 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:41:10 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:41:10 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:41:29 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:41:32 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:41:32 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:41:45 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:44:40 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:44:40 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:44:40 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:44:48 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:44:50 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:44:50 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:44:57 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:45:45 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:45:47 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:45:47 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:45:56 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:46:01 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:46:04 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:46:04 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:46:13 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:48:33 [INFO] main: Entrevista iniciada — usuario=Entrevistado1 categoría=backend
+2026-05-27 19:52:52 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:52:53 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:52:53 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:53:03 [INFO] main: Modelo de embeddings listo.
+2026-05-27 19:53:04 [INFO] main: Apagando Tech Interview AI.
+2026-05-27 19:53:05 [INFO] main: Iniciando Tech Interview AI...
+2026-05-27 19:53:05 [INFO] main: Tablas de base de datos verificadas.
+2026-05-27 19:53:13 [INFO] main: Modelo de embeddings listo.
+2026-05-28 09:16:29 [INFO] main: Iniciando Tech Interview AI...
+2026-05-28 09:16:29 [INFO] main: Tablas de base de datos verificadas.
+2026-05-28 09:16:36 [INFO] main: Modelo de embeddings listo.
+2026-05-28 09:18:37 [INFO] main: Apagando Tech Interview AI.
+2026-05-28 18:34:57 [INFO] main: Iniciando Tech Interview AI...
+2026-05-28 18:34:58 [INFO] main: Tablas de base de datos verificadas.
+2026-05-28 18:35:06 [INFO] main: Modelo de embeddings listo.
+2026-05-28 18:35:55 [INFO] main: Apagando Tech Interview AI.
+2026-05-28 18:35:56 [INFO] main: Iniciando Tech Interview AI...
+2026-05-28 18:35:56 [INFO] main: Tablas de base de datos verificadas.
+2026-05-28 18:36:03 [INFO] main: Modelo de embeddings listo.
+2026-05-28 18:36:03 [INFO] main: Iniciando Tech Interview AI...
+2026-05-28 18:36:03 [INFO] main: Tablas de base de datos verificadas.
+2026-05-28 18:36:10 [INFO] main: Modelo de embeddings listo.
+2026-05-28 18:37:08 [INFO] main: Apagando Tech Interview AI.
+2026-05-28 18:37:10 [INFO] main: Iniciando Tech Interview AI...
+2026-05-28 18:37:10 [INFO] main: Tablas de base de datos verificadas.
+2026-05-28 18:37:17 [INFO] main: Modelo de embeddings listo.
+2026-05-28 18:46:57 [INFO] main: Entrevista iniciada — usuario=Andres categoría=backend

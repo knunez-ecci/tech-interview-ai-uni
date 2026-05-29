@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado – Tech Interview AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="/">Tech Interview AI</a>
+  <div class="navbar-links" style="display:flex;align-items:center;gap:1rem;">
+    <a href="/history">Historial</a>
+    <span style="font-size:0.85rem;color:var(--text-muted);">{{ current_user.username }}</span>
+    <a href="/logout" style="color:var(--danger);font-size:0.85rem;">Salir</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  {% if result.error %}
+  <div class="alert alert-error">
+    ❌ Error: {{ result.error }}
+    <br><small>Verifica que el servicio de IA esté disponible y configurado en <code>.env</code></small>
+  </div>
+  {% if in_interview %}
+  <a href="/question" class="btn btn-outline" style="margin-top:1rem;">← Volver a la pregunta</a>
+  {% else %}
+  <a href="/" class="btn btn-primary" style="margin-top:1rem;">← Volver</a>
+  {% endif %}
+
+  {% else %}
+
+  <!-- Score -->
+  <div class="card">
+    <div class="result-header">
+      {% set score = result.score | default(0) %}
+      {% set score_class = "score-poor" %}
+      {% if score >= 9 %}{% set score_class = "score-excellent" %}
+      {% elif score >= 7 %}{% set score_class = "score-good" %}
+      {% elif score >= 5 %}{% set score_class = "score-acceptable" %}
+      {% endif %}
+
+      <div class="score-ring {{ score_class }}">
+        <span class="score-num">{{ score }}</span>
+        <span class="score-sub">/10</span>
+      </div>
+
+      <div class="result-summary">
+        <h3>Respuesta evaluada</h3>
+        <p style="font-size:1rem;font-weight:600;">
+          {{ result.quality_label | default("—") }}
+          <span style="color:var(--text-muted);font-weight:400;">
+            · {{ result.quality_percent | default(0) }}% calidad compuesta
+          </span>
+        </p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+          {% if result.category %}
+          <span class="badge badge-default">{{ result.category }}</span>
+          {% endif %}
+          {% if result.difficulty %}
+          <span class="badge badge-{{ result.difficulty }}">{{ result.difficulty }}</span>
+          {% endif %}
+          {% if result.level_detected %}
+          <span class="badge" style="background:rgba(108,99,255,0.15);color:var(--accent);">
+            Nivel detectado: {{ result.level_detected }}
+          </span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Métricas -->
+  <div class="card">
+    <div class="card-header"><span>📊</span><h2>Métricas de evaluación</h2></div>
+
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <label>
+          Relevancia (keywords)
+          <span>{{ (result.relevance * 100) | round(1) if result.relevance else 0 }}%</span>
+        </label>
+        <div class="bar-track">
+          <div class="bar-fill bar-accent" style="width:{{ (result.relevance * 100) | round(1) if result.relevance else 0 }}%"></div>
+        </div>
+      </div>
+      <div class="metric-item">
+        <label>
+          Coherencia
+          <span>{{ (result.coherence * 100) | round(1) if result.coherence else 0 }}%</span>
+        </label>
+        <div class="bar-track">
+          <div class="bar-fill bar-success" style="width:{{ (result.coherence * 100) | round(1) if result.coherence else 0 }}%"></div>
+        </div>
+      </div>
+      <div class="metric-item">
+        <label>
+          Similitud semántica
+          <span>{{ (result.semantic_similarity * 100) | round(1) if result.semantic_similarity else 0 }}%</span>
+        </label>
+        <div class="bar-track">
+          <div class="bar-fill bar-accent2" style="width:{{ (result.semantic_similarity * 100) | round(1) if result.semantic_similarity else 0 }}%"></div>
+        </div>
+      </div>
+      <div class="metric-item">
+        <label>
+          Exactitud técnica
+          <span>{{ (result.accuracy * 100) | round(1) if result.accuracy else 0 }}%</span>
+        </label>
+        <div class="bar-track">
+          <div class="bar-fill bar-warning" style="width:{{ (result.accuracy * 100) | round(1) if result.accuracy else 0 }}%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.25rem;">
+      <label style="display:flex;justify-content:space-between;font-size:0.85rem;color:var(--text-muted);margin-bottom:0.4rem;">
+        <span>Calidad compuesta</span>
+        <span style="color:var(--text);font-weight:700;">{{ result.quality_percent | default(0) }}%</span>
+      </label>
+      <div class="bar-track" style="height:12px;">
+        <div class="bar-fill bar-accent" style="width:{{ result.quality_percent | default(0) }}%;height:12px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Keywords -->
+  {% if result.keywords_found or result.keywords_missing %}
+  <div class="card">
+    <div class="card-header"><span>🔑</span><h2>Cobertura de conceptos clave</h2></div>
+    {% if result.keywords_found %}
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.4rem;">✅ Mencionados</p>
+    <div class="kw-list">
+      {% for kw in result.keywords_found %}
+      <span class="kw kw-found">{{ kw }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if result.keywords_missing %}
+    <p style="font-size:0.82rem;color:var(--text-muted);margin:0.8rem 0 0.4rem;">❌ Faltantes</p>
+    <div class="kw-list">
+      {% for kw in result.keywords_missing %}
+      <span class="kw kw-missing">{{ kw }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <!-- Feedback -->
+  <div class="card">
+    <div class="card-header"><span>🤖</span><h2>Retroalimentación del entrevistador IA</h2></div>
+    {% if result.strengths %}
+    <p style="font-size:0.82rem;color:var(--success);font-weight:600;margin-bottom:0.3rem;">💪 Puntos fuertes</p>
+    <p style="font-size:0.92rem;margin-bottom:1rem;">{{ result.strengths }}</p>
+    {% endif %}
+    {% if result.improvements %}
+    <p style="font-size:0.82rem;color:var(--warning);font-weight:600;margin-bottom:0.3rem;">📈 Áreas de mejora</p>
+    <p style="font-size:0.92rem;margin-bottom:1rem;">{{ result.improvements }}</p>
+    {% endif %}
+    {% if result.feedback %}
+    <p style="font-size:0.82rem;color:var(--text-muted);font-weight:600;margin-bottom:0.5rem;">💬 Feedback completo</p>
+    <div class="feedback-box">{{ result.feedback }}</div>
+    {% endif %}
+  </div>
+
+  <!-- Tu respuesta vs referencia -->
+  <div class="card">
+    <div class="card-header"><span>📝</span><h2>Tu respuesta</h2></div>
+    <p style="font-size:0.93rem;line-height:1.65;color:var(--text);">{{ result.user_answer_text }}</p>
+    <details style="margin-top:1rem;">
+      <summary>📚 Ver respuesta de referencia</summary>
+      <div class="ideal-text">{{ result.ideal_answer_text }}</div>
+    </details>
+  </div>
+
+  <!-- Acciones -->
+  <div class="btn-group" style="justify-content:center;">
+    {% if in_interview %}
+      {% if is_last %}
+        <a href="/summary" class="btn btn-primary" style="padding:0.75rem 2rem;">
+          🎯 Ver resultados finales
+        </a>
+      {% else %}
+        <a href="/next" class="btn btn-primary">→ Siguiente pregunta</a>
+      {% endif %}
+    {% else %}
+      <a href="/" class="btn btn-primary">🏠 Inicio</a>
+      <a href="/generate" class="btn btn-outline">✨ Generar nueva</a>
+    {% endif %}
+  </div>
+
+  {% endif %}
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.bar-fill').forEach(function(bar) {
+    var w = bar.style.width;
+    bar.style.width = '0%';
+    setTimeout(function() { bar.style.width = w; }, 100);
+  });
+});
+</script>
+</body>
+</html>

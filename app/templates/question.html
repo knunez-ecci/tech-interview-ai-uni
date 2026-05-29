@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrevista – Tech Interview AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="/">Tech Interview AI</a>
+  <div class="navbar-links" style="display:flex;align-items:center;gap:1rem;">
+    {% if ai_ok %}
+      <span style="font-size:0.82rem;"><span class="status-dot ok"></span>Ollama activo</span>
+    {% else %}
+      <span style="font-size:0.82rem;color:var(--danger);"><span class="status-dot fail"></span>Ollama offline</span>
+    {% endif %}
+    <a href="/interview/reset" style="font-size:0.82rem;color:var(--text-muted);">Reiniciar</a>
+    <span style="font-size:0.85rem;color:var(--text-muted);">{{ current_user.username }}</span>
+    <a href="/logout" style="color:var(--danger);font-size:0.85rem;">Salir</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  {% if not ai_ok %}
+  <div class="alert alert-warn">
+    ⚠️ Ollama no está disponible.
+    {% if ai_warning %}{{ ai_warning }}{% else %}Ejecuta <code>ollama serve</code>.{% endif %}
+  </div>
+  {% endif %}
+
+  {% if error %}
+  <div class="alert alert-error">❌ {{ error }}</div>
+  {% endif %}
+
+  <!-- Progreso -->
+  <div style="margin-bottom:1.5rem;">
+    <div class="progress-label">
+      <span>Pregunta {{ progress_current }} de {{ progress_total }}</span>
+      <span style="color:var(--text);">{{ progress_pct }}% completado</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width:{{ progress_pct }}%"></div>
+    </div>
+    <div style="display:flex;gap:0.5rem;margin-top:0.5rem;">
+      {% for i in range(progress_total) %}
+        <div style="
+          flex:1;height:4px;border-radius:2px;
+          background:{% if i < progress_current - 1 %}var(--accent){% elif i == progress_current - 1 %}var(--accent2){% else %}var(--border){% endif %};
+        "></div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Pregunta -->
+  <div class="card">
+    <div class="card-header">
+      <span>📋</span>
+      <h2>Pregunta técnica</h2>
+      <div style="margin-left:auto;display:flex;gap:0.4rem;">
+        <span class="badge badge-{{ question.difficulty }}">{{ question.difficulty }}</span>
+        <span class="badge badge-default">{{ question.category }}</span>
+      </div>
+    </div>
+
+    <p class="question-text">{{ question.question }}</p>
+
+    {% if question.code_snippet %}
+    <div style="margin-bottom:1.25rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem;">
+        <span style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);">
+          💻 Código de referencia
+        </span>
+        <button type="button" onclick="copySnippet()" style="background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--text-muted);font-size:0.75rem;padding:0.2rem 0.6rem;cursor:pointer;" id="copyBtn">
+          Copiar
+        </button>
+      </div>
+      <div class="code-snippet-block">
+        <pre class="code-snippet" id="codeSnippet">{{ question.code_snippet }}</pre>
+      </div>
+    </div>
+    {% endif %}
+
+    <form action="/evaluate" method="post" id="evalForm">
+      <input type="hidden" name="question" value="{{ question.question }}">
+      <input type="hidden" name="ideal_answer" value="{{ question.ideal_answer }}">
+      <input type="hidden" name="keywords" value="{{ question.keywords | join(',') }}">
+      <input type="hidden" name="question_id" value="{{ question.id | default('') }}">
+      <input type="hidden" name="difficulty" value="{{ question.difficulty }}">
+      <input type="hidden" name="category" value="{{ question.category }}">
+      <input type="hidden" name="from_interview" value="1">
+      <input type="hidden" name="code_snippet" value="{{ question.code_snippet | default('') }}">
+
+      <textarea
+        name="user_answer"
+        rows="8"
+        placeholder="Escribe tu respuesta aquí. Explica el concepto con tus propias palabras, menciona casos de uso y por qué es relevante..."></textarea>
+
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary" id="submitBtn">
+          <span id="btnText">🚀 Evaluar respuesta</span>
+          <span class="spinner" id="spinner"></span>
+        </button>
+        <span style="font-size:0.82rem;color:var(--text-muted);align-self:center;">
+          Debes responder para avanzar
+        </span>
+      </div>
+    </form>
+  </div>
+
+  <p style="text-align:center;color:var(--text-muted);font-size:0.82rem;margin-top:2rem;">
+    Powered by Ollama · Sentence-BERT Embeddings
+  </p>
+</div>
+
+<script>
+document.getElementById('evalForm').addEventListener('submit', function(e) {
+  var answer = this.querySelector('textarea[name="user_answer"]').value.trim();
+  if (!answer) { e.preventDefault(); return; }
+  document.getElementById('btnText').textContent = 'Evaluando...';
+  document.getElementById('spinner').style.display = 'block';
+  document.getElementById('submitBtn').disabled = true;
+});
+
+function copySnippet() {
+  var code = document.getElementById('codeSnippet');
+  if (!code) return;
+  navigator.clipboard.writeText(code.textContent).then(function() {
+    var btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copiado';
+    setTimeout(function() { btn.textContent = 'Copiar'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Interview AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="/">Tech Interview AI</a>
+  <div class="navbar-links" style="display:flex;align-items:center;gap:1rem;">
+    {% if ai_ok %}
+      <span style="font-size:0.82rem;"><span class="status-dot ok"></span>Ollama · {{ ai_model }}</span>
+    {% else %}
+      <span style="font-size:0.82rem;color:var(--danger);"><span class="status-dot fail"></span>Ollama offline</span>
+    {% endif %}
+    <a href="/history">Historial</a>
+    <span style="font-size:0.85rem;color:var(--text-muted);">{{ current_user.username }}</span>
+    <a href="/logout" style="color:var(--danger);font-size:0.85rem;">Salir</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  {% if not ai_ok %}
+  <div class="alert alert-warn">
+    <strong>⚠️ Ollama no está disponible.</strong>
+    {% if ai_warning %}
+      <br>{{ ai_warning }}
+    {% else %}
+      <br>Ejecuta <code>ollama serve</code> y luego <code>ollama pull qwen2.5:3b</code> para usar el evaluador IA.
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <!-- Hero -->
+  <div style="text-align:center;padding:2.5rem 0 1.5rem;">
+    <h1 style="font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:0.5rem;">
+      Entrevista técnica con IA
+    </h1>
+    <p style="color:var(--text-muted);font-size:1rem;max-width:480px;margin:0 auto;">
+      Responde 3 preguntas (1 junior · 1 mid · 1 senior) y descubre tu nivel real
+      con retroalimentación detallada al finalizar.
+    </p>
+  </div>
+
+  <!-- Cómo funciona -->
+  <div class="card" style="padding:1.25rem 1.75rem;margin-bottom:1.5rem;">
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;">
+      <div style="text-align:center;min-width:110px;">
+        <div style="font-size:1.6rem;margin-bottom:0.3rem;">📋</div>
+        <div style="font-size:0.82rem;color:var(--text-muted);">3 preguntas<br>por niveles</div>
+      </div>
+      <div style="text-align:center;min-width:110px;">
+        <div style="font-size:1.6rem;margin-bottom:0.3rem;">🤖</div>
+        <div style="font-size:0.82rem;color:var(--text-muted);">Evaluación IA<br>con métricas</div>
+      </div>
+      <div style="text-align:center;min-width:110px;">
+        <div style="font-size:1.6rem;margin-bottom:0.3rem;">🎯</div>
+        <div style="font-size:0.82rem;color:var(--text-muted);">Nivel detectado<br>al finalizar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="card">
+    <div class="card-header">
+      <span>🚀</span>
+      <h2>Iniciar entrevista</h2>
+    </div>
+
+    <form method="post" action="/interview/start">
+      <label style="display:block;font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;font-weight:500;">
+        Área de enfoque <span style="font-weight:400;">(opcional)</span>
+      </label>
+      <div style="margin-bottom:1.5rem;">
+        <select name="category" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:0.45rem 0.9rem;font-size:0.88rem;width:100%;max-width:280px;outline:none;">
+          <option value="all">Todas las áreas</option>
+          {% for cat in categories %}
+          <option value="{{ cat }}">{{ cat | capitalize }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:0.8rem;font-size:1rem;">
+        ▶ Comenzar entrevista
+      </button>
+    </form>
+  </div>
+
+  <p style="text-align:center;color:var(--text-muted);font-size:0.82rem;margin-top:2rem;">
+    Powered by Ollama · Sentence-BERT Embeddings
+  </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados finales – Tech Interview AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="/">Tech Interview AI</a>
+  <div class="navbar-links" style="display:flex;align-items:center;gap:1rem;">
+    <a href="/history">Historial</a>
+    <span style="font-size:0.85rem;color:var(--text-muted);">{{ current_user.username }}</span>
+    <a href="/logout" style="color:var(--danger);font-size:0.85rem;">Salir</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Nivel final detectado -->
+  <div class="card level-card">
+    <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:0.75rem;">Entrevista completada · Resultado final</p>
+    <h1 style="font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;">Tu nivel detectado</h1>
+
+    {% set lc = stats.level_color %}
+    {% if lc == "danger" %}
+      <div class="level-badge-large" style="background:rgba(255,77,109,0.15);color:var(--danger);">{{ stats.final_level }}</div>
+    {% elif lc == "warning" %}
+      <div class="level-badge-large" style="background:rgba(255,183,3,0.15);color:var(--warning);">{{ stats.final_level }}</div>
+    {% elif lc == "success" %}
+      <div class="level-badge-large" style="background:rgba(6,214,160,0.15);color:var(--success);">{{ stats.final_level }}</div>
+    {% else %}
+      <div class="level-badge-large" style="background:rgba(255,255,255,0.08);color:var(--text-muted);">{{ stats.final_level }}</div>
+    {% endif %}
+
+    <p style="color:var(--text-muted);font-size:0.88rem;margin-top:0.75rem;">
+      Basado en el promedio de tus respuestas por nivel de dificultad
+    </p>
+  </div>
+
+  <!-- Resumen global -->
+  <div class="card">
+    <div class="card-header"><span>📊</span><h2>Resumen global</h2></div>
+
+    <div class="summary-stats-grid">
+      <div class="summary-stat">
+        <span class="summary-stat-value">{{ stats.overall_avg }}/10</span>
+        <span class="summary-stat-label">Score promedio</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value">{{ stats.avg_quality }}%</span>
+        <span class="summary-stat-label">Calidad compuesta</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value" style="color:var(--success);">{{ stats.level_avgs.junior }}/10</span>
+        <span class="summary-stat-label">Junior avg</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value" style="color:var(--warning);">{{ stats.level_avgs.mid }}/10</span>
+        <span class="summary-stat-label">Mid avg</span>
+      </div>
+      <div class="summary-stat">
+        <span class="summary-stat-value" style="color:var(--danger);">{{ stats.level_avgs.senior }}/10</span>
+        <span class="summary-stat-label">Senior avg</span>
+      </div>
+    </div>
+
+    <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.75rem;">
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-muted);margin-bottom:0.3rem;">
+          <span>Junior</span><span>{{ stats.level_avgs.junior }}/10</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill bar-success" style="width:{{ (stats.level_avgs.junior / 10 * 100) | round(1) }}%"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-muted);margin-bottom:0.3rem;">
+          <span>Mid</span><span>{{ stats.level_avgs.mid }}/10</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill bar-warning" style="width:{{ (stats.level_avgs.mid / 10 * 100) | round(1) }}%"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text-muted);margin-bottom:0.3rem;">
+          <span>Senior</span><span>{{ stats.level_avgs.senior }}/10</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill bar-accent" style="width:{{ (stats.level_avgs.senior / 10 * 100) | round(1) }}%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Retroalimentación detallada por pregunta -->
+  <div class="card-header" style="padding:0;border:none;margin-bottom:1rem;">
+    <span style="font-size:1.2rem;">📝</span>
+    <h2 style="font-size:1.15rem;font-weight:700;color:var(--text);">Retroalimentación por pregunta</h2>
+  </div>
+
+  {% for item in detail %}
+  {% set sc = item.score %}
+  {% set sc_class = "score-poor" %}
+  {% if sc >= 9 %}{% set sc_class = "score-excellent" %}
+  {% elif sc >= 7 %}{% set sc_class = "score-good" %}
+  {% elif sc >= 5 %}{% set sc_class = "score-acceptable" %}
+  {% endif %}
+
+  <div class="card" style="margin-bottom:1.25rem;">
+
+    <!-- Header de la pregunta -->
+    <div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.25rem;">
+      <div class="score-ring {{ sc_class }}">
+        <span class="score-num">{{ sc }}</span>
+        <span class="score-sub">/10</span>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+          <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted);">#{{ item.num }}</span>
+          <span class="badge badge-{{ item.difficulty }}">{{ item.difficulty }}</span>
+          <span class="badge badge-default">{{ item.category }}</span>
+          {% if item.quality_label %}
+          <span class="badge" style="background:rgba(108,99,255,0.1);color:var(--accent);">
+            {{ item.quality_label }} · {{ item.quality_percent }}%
+          </span>
+          {% endif %}
+        </div>
+        <p style="font-size:1rem;font-weight:600;color:var(--text);line-height:1.5;">
+          {{ item.question }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Feedback del LLM -->
+    {% if item.feedback %}
+    <div style="margin-bottom:1rem;">
+      <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:0.5rem;">
+        💬 Retroalimentación
+      </p>
+      <div class="feedback-box">{{ item.feedback }}</div>
+    </div>
+    {% endif %}
+
+    <!-- Fortalezas e Improvements -->
+    {% if item.strengths or item.improvements %}
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem;">
+      {% if item.strengths %}
+      <div style="background:rgba(6,214,160,0.07);border:1px solid rgba(6,214,160,0.2);border-radius:8px;padding:0.75rem 1rem;">
+        <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--success);margin-bottom:0.4rem;">
+          💪 Fortalezas
+        </p>
+        <p style="font-size:0.87rem;color:var(--text);line-height:1.5;">{{ item.strengths }}</p>
+      </div>
+      {% endif %}
+      {% if item.improvements %}
+      <div style="background:rgba(255,183,3,0.07);border:1px solid rgba(255,183,3,0.2);border-radius:8px;padding:0.75rem 1rem;">
+        <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--warning);margin-bottom:0.4rem;">
+          📈 Mejorar
+        </p>
+        <p style="font-size:0.87rem;color:var(--text);line-height:1.5;">{{ item.improvements }}</p>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Keywords encontradas / faltantes -->
+    {% if item.keywords_found or item.keywords_missing %}
+    <div style="margin-bottom:1rem;">
+      <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:0.4rem;">
+        🔑 Keywords
+      </p>
+      <div class="kw-list">
+        {% for kw in item.keywords_found %}
+          <span class="kw kw-found">✓ {{ kw }}</span>
+        {% endfor %}
+        {% for kw in item.keywords_missing %}
+          <span class="kw kw-missing">✗ {{ kw }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Tu respuesta vs respuesta ideal -->
+    {% if item.user_answer or item.ideal_answer %}
+    <details>
+      <summary style="font-size:0.85rem;color:var(--text-muted);cursor:pointer;padding:0.4rem 0;user-select:none;">
+        Ver respuesta completa ↕
+      </summary>
+      <div class="comparison-grid" style="margin-top:0.75rem;">
+        <div class="comparison-col comparison-col-user">
+          <div class="comparison-col-header" style="color:var(--accent2);">Tu respuesta</div>
+          <p style="font-size:0.88rem;color:var(--text);line-height:1.6;white-space:pre-wrap;">{{ item.user_answer }}</p>
+        </div>
+        <div class="comparison-col comparison-col-ideal">
+          <div class="comparison-col-header" style="color:var(--text-muted);">Respuesta ideal</div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;white-space:pre-wrap;">{{ item.ideal_answer }}</p>
+        </div>
+      </div>
+    </details>
+    {% endif %}
+
+  </div>
+  {% endfor %}
+
+  <!-- Acciones -->
+  <div class="btn-group" style="justify-content:center;margin-top:0.5rem;">
+    <a href="/interview/reset" class="btn btn-primary" style="padding:0.75rem 2rem;">
+      🔄 Nueva entrevista
+    </a>
+    <a href="/history" class="btn btn-outline">📋 Ver historial</a>
+    <a href="/" class="btn btn-outline">🏠 Inicio</a>
+  </div>
+
+  <p style="text-align:center;color:var(--text-muted);font-size:0.82rem;margin-top:2rem;">
+    Powered by Ollama · Sentence-BERT Embeddings
+  </p>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.bar-fill').forEach(function(bar) {
+    var w = bar.style.width;
+    bar.style.width = '0%';
+    setTimeout(function() { bar.style.width = w; }, 150);
+  });
+});
+</script>
+</body>
+</html>

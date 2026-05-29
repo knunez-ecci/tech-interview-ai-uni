@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión – Tech Interview AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    <div style="text-align:center;margin-bottom:2rem;">
+      <div class="navbar-brand" style="font-size:1.4rem;justify-content:center;margin-bottom:0.4rem;">
+        Tech Interview AI
+      </div>
+      <p style="color:var(--text-muted);font-size:0.9rem;">Inicia sesión para practicar</p>
+    </div>
+
+    {% if error %}
+    <div class="alert alert-error" style="margin-bottom:1.25rem;">{{ error }}</div>
+    {% endif %}
+
+    <form method="post" action="/login">
+      <div class="form-group">
+        <label>Usuario</label>
+        <input type="text" name="username" placeholder="tu_usuario" required autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" name="password" placeholder="••••••" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:0.75rem;justify-content:center;text-align:center;">
+        Iniciar sesión
+      </button>
+    </form>
+
+    <p style="text-align:center;margin-top:1.5rem;font-size:0.88rem;color:var(--text-muted);">
+      ¿No tienes cuenta?
+      <a href="/register" style="color:var(--accent);">Regístrate gratis</a>
+    </p>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generar Pregunta – Tech Interview AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="/">Tech Interview AI</a>
+  <div class="navbar-links" style="display:flex;align-items:center;gap:1rem;">
+    <a href="/">Practicar</a>
+    <a href="/history">Historial</a>
+    <span style="font-size:0.85rem;color:var(--text-muted);">{{ current_user.username }}</span>
+    <a href="/logout" style="color:var(--danger);font-size:0.85rem;">Salir</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="card">
+    <div class="card-header"><span>✨</span><h2>Generar pregunta con IA</h2></div>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1.25rem;">
+      Ollama generará una pregunta técnica nueva que no está en el dataset, evaluada con Sentence-BERT.
+    </p>
+
+    <form method="post" action="/generate" id="genForm">
+      <div class="filters" style="margin-bottom:1.25rem;">
+        <select name="category">
+          {% for cat in categories %}
+          <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>
+            {{ cat | capitalize }}
+          </option>
+          {% endfor %}
+        </select>
+
+        <select name="difficulty">
+          {% for lvl in levels %}
+          <option value="{{ lvl }}" {% if selected_level == lvl %}selected{% endif %}>
+            {{ lvl | capitalize }}
+          </option>
+          {% endfor %}
+        </select>
+
+        <button type="submit" class="btn btn-primary" onclick="showLoading(this)">
+          <span id="btnText">✨ Generar</span>
+          <span class="spinner" id="spinner"></span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  {% if error %}
+  <div class="alert alert-error">❌ {{ error }}</div>
+  {% endif %}
+
+  {% if generated %}
+  <div class="card">
+    <div class="card-header">
+      <span>📋</span>
+      <h2>Pregunta generada</h2>
+      <div style="margin-left:auto;display:flex;gap:0.5rem;">
+        <span class="badge badge-{{ generated.difficulty }}">{{ generated.difficulty }}</span>
+        <span class="badge badge-default">{{ generated.category }}</span>
+      </div>
+    </div>
+
+    <p class="question-text">{{ generated.question }}</p>
+
+    {% if generated.keywords %}
+    <div class="kw-list" style="margin:0.75rem 0;">
+      {% for kw in generated.keywords %}
+      <span class="kw kw-found">{{ kw }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Usar esta pregunta -->
+    <form action="/evaluate" method="post" style="margin-top:1.25rem;">
+      <input type="hidden" name="question" value="{{ generated.question }}">
+      <input type="hidden" name="ideal_answer" value="{{ generated.ideal_answer }}">
+      <input type="hidden" name="keywords" value="{{ generated.keywords | join(',') }}">
+      <input type="hidden" name="difficulty" value="{{ generated.difficulty }}">
+      <input type="hidden" name="category" value="{{ generated.category }}">
+
+      <textarea
+        name="user_answer"
+        rows="7"
+        placeholder="Escribe tu respuesta a esta pregunta generada..."></textarea>
+
+      <div class="btn-group">
+        <button type="submit" class="btn btn-success" onclick="showLoading2(this)">
+          <span id="evalText">🚀 Evaluar esta pregunta</span>
+          <span class="spinner" id="spinner2"></span>
+        </button>
+      </div>
+    </form>
+
+    <details style="margin-top:1rem;">
+      <summary>📚 Ver respuesta ideal generada</summary>
+      <div class="ideal-text">{{ generated.ideal_answer }}</div>
+    </details>
+  </div>
+  {% endif %}
+
+</div>
+
+<script>
+function showLoading(btn) {
+  document.getElementById('btnText').textContent = 'Generando...';
+  document.getElementById('spinner').style.display = 'block';
+  btn.disabled = true;
+}
+function showLoading2(btn) {
+  document.getElementById('evalText').textContent = 'Evaluando...';
+  document.getElementById('spinner2').style.display = 'block';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>

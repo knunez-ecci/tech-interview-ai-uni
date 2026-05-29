@@ -1,0 +1,1542 @@
+[
+  {
+    "id": 1,
+    "question": "¿Qué es el Virtual DOM en React y por qué mejora el rendimiento?",
+    "ideal_answer": "El Virtual DOM es una representación en memoria del DOM real. React lo usa para comparar el estado anterior con el nuevo mediante un proceso llamado reconciliación (diffing). Solo actualiza los nodos del DOM real que realmente cambiaron, evitando re-renders costosos en toda la página. Esto mejora el rendimiento porque manipular el DOM real es una operación costosa, y al minimizar esas operaciones, la UI responde más rápido.",
+    "keywords": [
+      "virtual dom",
+      "reconciliación",
+      "diffing",
+      "render",
+      "rendimiento",
+      "DOM real"
+    ],
+    "difficulty": "junior",
+    "category": "frontend"
+  },
+  {
+    "id": 2,
+    "question": "¿Cuál es la diferencia entre props y state en React?",
+    "ideal_answer": "Las props son datos que un componente recibe desde su componente padre y son inmutables dentro del componente hijo. El state es el estado interno del componente, mutable, y cuando cambia provoca un re-render. Las props fluyen de padre a hijo (unidireccional), mientras que el state es gestionado internamente con useState o this.setState.",
+    "keywords": [
+      "props",
+      "state",
+      "inmutable",
+      "re-render",
+      "useState",
+      "unidireccional"
+    ],
+    "difficulty": "junior",
+    "category": "frontend"
+  },
+  {
+    "id": 3,
+    "question": "¿Qué es CSS Flexbox y cuándo lo usarías sobre CSS Grid?",
+    "ideal_answer": "Flexbox es un modelo de diseño unidimensional que distribuye elementos en una fila o columna. Grid es bidimensional y maneja filas y columnas simultáneamente. Usaría Flexbox para alinear elementos en una sola dirección, como una barra de navegación o un grupo de botones. Usaría Grid para layouts más complejos que requieren control en dos ejes, como la estructura general de una página.",
+    "keywords": [
+      "flexbox",
+      "grid",
+      "unidimensional",
+      "bidimensional",
+      "layout",
+      "alineación"
+    ],
+    "difficulty": "junior",
+    "category": "frontend"
+  },
+  {
+    "id": 31,
+    "question": "¿Qué es el event bubbling en JavaScript y cómo se detiene?",
+    "ideal_answer": "El event bubbling es el mecanismo por el cual un evento disparado en un elemento hijo se propaga hacia arriba en el DOM hasta llegar al elemento raíz. Esto permite que los elementos padres reaccionen a eventos de sus hijos. Para detenerlo se usa event.stopPropagation(), que impide que el evento siga subiendo. También existe event.stopImmediatePropagation() que además evita que otros listeners del mismo elemento se ejecuten.",
+    "keywords": [
+      "event bubbling",
+      "propagación",
+      "stopPropagation",
+      "DOM",
+      "evento",
+      "listener"
+    ],
+    "difficulty": "junior",
+    "category": "frontend"
+  },
+  {
+    "id": 32,
+    "question": "¿Cuál es la diferencia entre == y === en JavaScript?",
+    "ideal_answer": "El operador == realiza comparación con coerción de tipos: JavaScript intenta convertir los operandos al mismo tipo antes de comparar, lo que puede producir resultados inesperados como 0 == '0' siendo true. El operador === realiza comparación estricta sin coerción: tanto el valor como el tipo deben ser iguales. En la práctica siempre se prefiere === para evitar bugs sutiles por la coerción implícita.",
+    "keywords": [
+      "coerción de tipos",
+      "igualdad estricta",
+      "tipo",
+      "valor",
+      "comparación",
+      "==="
+    ],
+    "difficulty": "junior",
+    "category": "frontend"
+  },
+  {
+    "id": 4,
+    "question": "Explica el concepto de closures en JavaScript con un ejemplo práctico.",
+    "ideal_answer": "Un closure es una función que recuerda el entorno léxico donde fue creada, incluso después de que ese entorno haya terminado de ejecutarse. Por ejemplo, una función interna puede acceder a variables de su función externa aunque esta ya haya retornado. Son útiles para encapsular estado privado, como en el patrón módulo o en funciones de fábrica (factory functions).",
+    "keywords": [
+      "closure",
+      "entorno léxico",
+      "scope",
+      "encapsulamiento",
+      "función interna",
+      "factory function"
+    ],
+    "difficulty": "mid",
+    "category": "frontend"
+  },
+  {
+    "id": 5,
+    "question": "¿Cómo funciona el Event Loop en JavaScript y qué es la Call Stack?",
+    "ideal_answer": "JavaScript es single-threaded y usa un Event Loop para manejar operaciones asíncronas. La Call Stack ejecuta funciones síncronamente. Cuando hay una operación asíncrona (setTimeout, fetch), se delega a las Web APIs. Al completarse, el callback pasa al Task Queue. El Event Loop revisa si la Call Stack está vacía y, si lo está, mueve el callback de la cola a la pila para ejecutarlo.",
+    "keywords": [
+      "event loop",
+      "call stack",
+      "single-threaded",
+      "asíncrono",
+      "task queue",
+      "web apis",
+      "callback"
+    ],
+    "difficulty": "mid",
+    "category": "frontend"
+  },
+  {
+    "id": 6,
+    "question": "¿Qué son los React Hooks y cuáles son las reglas para usarlos correctamente?",
+    "ideal_answer": "Los Hooks son funciones que permiten usar estado y otras características de React en componentes funcionales. Los más comunes son useState, useEffect y useContext. Las reglas son: solo llamarlos en el nivel superior del componente (no dentro de loops, condiciones o funciones anidadas) y solo en componentes funcionales de React o en custom hooks. Esto garantiza que el orden de los hooks sea consistente entre renders.",
+    "keywords": [
+      "hooks",
+      "useState",
+      "useEffect",
+      "componente funcional",
+      "reglas de hooks",
+      "custom hooks"
+    ],
+    "difficulty": "mid",
+    "category": "frontend"
+  },
+  {
+    "id": 33,
+    "question": "¿Qué es el patrón Observer y cómo se relaciona con addEventListener en JavaScript?",
+    "ideal_answer": "El patrón Observer define una dependencia uno-a-muchos entre objetos: cuando uno cambia de estado, todos sus dependientes son notificados automáticamente. En JavaScript, addEventListener implementa este patrón: un elemento DOM es el sujeto observable, y cada listener registrado es un observador. Al dispararse el evento, el DOM notifica a todos los listeners registrados para ese evento. Este patrón es la base de la programación reactiva y sistemas de eventos.",
+    "keywords": [
+      "observer",
+      "addEventListener",
+      "listener",
+      "evento",
+      "notificación",
+      "suscriptor",
+      "reactivo"
+    ],
+    "difficulty": "mid",
+    "category": "frontend"
+  },
+  {
+    "id": 34,
+    "question": "¿Cómo funciona el Context API de React y cuándo usarlo en lugar de Redux?",
+    "ideal_answer": "Context API permite compartir datos entre componentes sin pasar props manualmente por cada nivel del árbol (prop drilling). Se usa con createContext, un Provider que envuelve los componentes y useContext para consumir el valor. Se recomienda para estado global simple como tema, idioma o datos del usuario autenticado. Redux es más apropiado cuando el estado es complejo, tiene muchas actualizaciones frecuentes, o se necesita debugging avanzado con DevTools y middleware.",
+    "keywords": [
+      "Context API",
+      "createContext",
+      "Provider",
+      "useContext",
+      "prop drilling",
+      "Redux",
+      "estado global"
+    ],
+    "difficulty": "mid",
+    "category": "frontend"
+  },
+  {
+    "id": 7,
+    "question": "¿Cómo optimizarías el rendimiento de una aplicación React con listas grandes de datos?",
+    "ideal_answer": "Usaría virtualización con librerías como react-window o react-virtualized para renderizar solo los elementos visibles en pantalla. Aplicaría React.memo para evitar re-renders innecesarios en componentes hijos, useMemo para memorizar cálculos costosos y useCallback para estabilizar referencias de funciones. También implementaría paginación o carga infinita en lugar de cargar todos los datos a la vez.",
+    "keywords": [
+      "virtualización",
+      "react-window",
+      "React.memo",
+      "useMemo",
+      "useCallback",
+      "paginación",
+      "rendimiento"
+    ],
+    "difficulty": "senior",
+    "category": "frontend"
+  },
+  {
+    "id": 8,
+    "question": "Explica el patrón de micro-frontends: ventajas, desventajas y cuándo aplicarlo.",
+    "ideal_answer": "Los micro-frontends dividen el frontend en módulos independientes, cada uno desarrollado y desplegado por equipos distintos. Ventajas: despliegue independiente, autonomía de equipos, tecnologías heterogéneas por módulo. Desventajas: overhead de comunicación entre módulos, duplicación de dependencias, mayor complejidad en la gestión del estado global y en testing de integración. Se aplica en aplicaciones empresariales grandes con múltiples equipos trabajando en paralelo.",
+    "keywords": [
+      "micro-frontends",
+      "despliegue independiente",
+      "módulos",
+      "estado global",
+      "integración",
+      "equipos autónomos"
+    ],
+    "difficulty": "senior",
+    "category": "frontend"
+  },
+  {
+    "id": 35,
+    "question": "¿Cómo implementarías code splitting y lazy loading en React para mejorar el tiempo de carga inicial?",
+    "ideal_answer": "Code splitting divide el bundle en chunks más pequeños que se cargan bajo demanda. En React se implementa con React.lazy() junto a Suspense: lazy() importa el componente dinámicamente y Suspense muestra un fallback mientras carga. A nivel de router, cada ruta se convierte en un chunk independiente. También se puede usar import() dinámico para módulos específicos. Esto reduce el JavaScript inicial que el navegador debe parsear y ejecutar, mejorando el Time to Interactive.",
+    "keywords": [
+      "code splitting",
+      "lazy loading",
+      "React.lazy",
+      "Suspense",
+      "bundle",
+      "chunk",
+      "Time to Interactive",
+      "import dinámico"
+    ],
+    "difficulty": "senior",
+    "category": "frontend"
+  },
+  {
+    "id": 36,
+    "question": "¿Qué es el Server-Side Rendering (SSR) y cuándo elegirías Next.js sobre una SPA pura?",
+    "ideal_answer": "SSR genera el HTML de la página en el servidor antes de enviarlo al cliente, a diferencia de una SPA que renderiza todo en el navegador. Las ventajas son mejor SEO (los crawlers ven el contenido completo), mejor Time to First Contentful Paint y rendimiento percibido. Elegiría Next.js cuando el SEO es crítico (e-commerce, blogs, landing pages), cuando la velocidad de carga inicial importa, o cuando se necesita mezclar rutas estáticas y dinámicas. Una SPA pura es suficiente para aplicaciones internas o dashboards donde el SEO no importa.",
+    "keywords": [
+      "SSR",
+      "Server-Side Rendering",
+      "Next.js",
+      "SPA",
+      "SEO",
+      "Time to First Contentful Paint",
+      "HTML",
+      "crawler"
+    ],
+    "difficulty": "senior",
+    "category": "frontend"
+  },
+  {
+    "id": 37,
+    "question": "¿Cómo diseñarías un sistema de design tokens y componentes reutilizables para un equipo grande?",
+    "ideal_answer": "Los design tokens son variables que representan las decisiones de diseño (colores, tipografía, espaciado) en formato agnóstico de plataforma, definidos en JSON o YAML y transformados a CSS variables, tokens de iOS o Android. La arquitectura sería: tokens base → tokens semánticos → componentes atómicos → componentes compuestos. Usaría Storybook para documentar y testear componentes visualmente, un repositorio de design system compartido como paquete npm, y versionado semántico para gestionar breaking changes. Los tokens permiten cambiar el tema global sin modificar componentes.",
+    "keywords": [
+      "design tokens",
+      "design system",
+      "Storybook",
+      "componentes atómicos",
+      "CSS variables",
+      "reutilizable",
+      "versionado"
+    ],
+    "difficulty": "senior",
+    "category": "frontend"
+  },
+  {
+    "id": 9,
+    "question": "¿Qué es una API REST y cuáles son sus principios fundamentales?",
+    "ideal_answer": "REST (Representational State Transfer) es un estilo arquitectónico para APIs sobre HTTP. Sus principios son: interfaz uniforme (uso de verbos HTTP como GET, POST, PUT, DELETE), stateless (cada request contiene toda la información necesaria), sistema de capas (el cliente no sabe si interactúa directamente con el servidor), cacheable (las respuestas deben indicar si pueden cachearse) y cliente-servidor desacoplados.",
+    "keywords": [
+      "REST",
+      "stateless",
+      "HTTP",
+      "verbos HTTP",
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE",
+      "cacheable",
+      "interfaz uniforme"
+    ],
+    "difficulty": "junior",
+    "category": "backend"
+  },
+  {
+    "id": 10,
+    "question": "¿Cuál es la diferencia entre autenticación y autorización?",
+    "ideal_answer": "La autenticación verifica la identidad del usuario (¿quién eres?), generalmente mediante credenciales como usuario y contraseña, tokens JWT o OAuth. La autorización determina qué tiene permiso de hacer ese usuario ya autenticado (¿qué puedes hacer?), mediante roles o permisos. Primero se autentica y luego se autoriza. Un usuario puede estar autenticado pero no tener autorización para ciertos recursos.",
+    "keywords": [
+      "autenticación",
+      "autorización",
+      "JWT",
+      "OAuth",
+      "roles",
+      "permisos",
+      "credenciales"
+    ],
+    "difficulty": "junior",
+    "category": "backend"
+  },
+  {
+    "id": 11,
+    "question": "¿Qué es un ORM y cuáles son sus ventajas y desventajas frente a SQL puro?",
+    "ideal_answer": "Un ORM (Object-Relational Mapper) mapea tablas de base de datos a objetos en el código, permitiendo interactuar con la BD usando el lenguaje de programación en lugar de SQL. Ventajas: abstracción, productividad, portabilidad entre motores de BD, y prevención de SQL injection. Desventajas: puede generar queries ineficientes, oculta la complejidad real, y para consultas muy complejas SQL puro es más adecuado.",
+    "keywords": [
+      "ORM",
+      "SQL",
+      "mapeo objeto-relacional",
+      "abstracción",
+      "SQL injection",
+      "query",
+      "productividad"
+    ],
+    "difficulty": "junior",
+    "category": "backend"
+  },
+  {
+    "id": 38,
+    "question": "¿Qué es un middleware en el contexto de una API backend y para qué se usa?",
+    "ideal_answer": "Un middleware es una función que se ejecuta en el ciclo request-response antes de llegar al handler final. Tiene acceso al objeto request, al response y a la función next() que pasa el control al siguiente middleware. Se usa para tareas transversales como autenticación (verificar JWT), logging, validación de datos, manejo de CORS, rate limiting o compresión. Al encadenar middlewares, cada uno tiene una responsabilidad única, siguiendo el principio de responsabilidad única.",
+    "keywords": [
+      "middleware",
+      "request",
+      "response",
+      "next",
+      "autenticación",
+      "logging",
+      "CORS",
+      "pipeline"
+    ],
+    "difficulty": "junior",
+    "category": "backend"
+  },
+  {
+    "id": 12,
+    "question": "¿Cómo funciona el patrón MVC en el contexto de una aplicación backend?",
+    "ideal_answer": "MVC separa la aplicación en tres capas: Model (lógica de negocio y acceso a datos), View (presentación, aunque en APIs REST suele ser el JSON de respuesta) y Controller (recibe la request HTTP, coordina el modelo y devuelve la respuesta). Esto facilita el mantenimiento, la separación de responsabilidades y el testing de cada capa de forma independiente.",
+    "keywords": [
+      "MVC",
+      "Model",
+      "View",
+      "Controller",
+      "separación de responsabilidades",
+      "capas",
+      "request",
+      "response"
+    ],
+    "difficulty": "mid",
+    "category": "backend"
+  },
+  {
+    "id": 13,
+    "question": "Explica qué son los índices en bases de datos y cómo impactan el rendimiento.",
+    "ideal_answer": "Un índice es una estructura de datos auxiliar (generalmente un B-Tree) que acelera las consultas SELECT evitando un full table scan. Mejora drásticamente el rendimiento de lectura, pero penaliza las operaciones de escritura (INSERT, UPDATE, DELETE) porque el índice también debe actualizarse. Se deben crear en columnas usadas frecuentemente en WHERE, JOIN o ORDER BY, pero no en todas las columnas para evitar overhead.",
+    "keywords": [
+      "índice",
+      "B-Tree",
+      "full table scan",
+      "SELECT",
+      "rendimiento",
+      "lectura",
+      "escritura",
+      "WHERE",
+      "JOIN"
+    ],
+    "difficulty": "mid",
+    "category": "backend"
+  },
+  {
+    "id": 14,
+    "question": "¿Qué es el patrón Repository y por qué se usa en arquitecturas limpias?",
+    "ideal_answer": "El patrón Repository abstrae el acceso a datos detrás de una interfaz, desacoplando la lógica de negocio de la tecnología de persistencia específica. Permite cambiar de ORM, base de datos o fuente de datos sin modificar la lógica de negocio. Facilita el testing mediante mocks o stubs del repositorio. Es fundamental en arquitecturas limpias (Clean Architecture) y DDD para respetar el principio de inversión de dependencias.",
+    "keywords": [
+      "Repository",
+      "abstracción",
+      "desacoplamiento",
+      "persistencia",
+      "Clean Architecture",
+      "DDD",
+      "inversión de dependencias",
+      "mock"
+    ],
+    "difficulty": "mid",
+    "category": "backend"
+  },
+  {
+    "id": 39,
+    "question": "¿Qué es la inyección de dependencias y cómo mejora el testing del código?",
+    "ideal_answer": "La inyección de dependencias es un patrón donde una clase recibe sus dependencias desde el exterior en lugar de crearlas internamente. En lugar de hacer new DatabaseConnection() dentro de una clase, la conexión se pasa como parámetro al constructor o método. Esto mejora el testing porque en los tests se pueden inyectar mocks o stubs en lugar de las implementaciones reales, eliminando la necesidad de una base de datos real, red o servicios externos durante las pruebas unitarias.",
+    "keywords": [
+      "inyección de dependencias",
+      "dependency injection",
+      "mock",
+      "stub",
+      "testing",
+      "inversión de control",
+      "constructor",
+      "acoplamiento"
+    ],
+    "difficulty": "mid",
+    "category": "backend"
+  },
+  {
+    "id": 40,
+    "question": "¿Cómo implementarías rate limiting en una API REST?",
+    "ideal_answer": "Rate limiting restringe el número de requests que un cliente puede hacer en un período de tiempo. Los algoritmos comunes son: Token Bucket (tokens se reponen a tasa fija, permite bursts), Sliding Window (cuenta requests en una ventana de tiempo móvil) y Fixed Window (reinicia el contador en intervalos fijos, vulnerable a bordes de ventana). En implementación, se almacena el contador en Redis por IP o API key con TTL. Se retorna el error 429 Too Many Requests con headers como X-RateLimit-Remaining para informar al cliente.",
+    "keywords": [
+      "rate limiting",
+      "Token Bucket",
+      "Sliding Window",
+      "Redis",
+      "429",
+      "TTL",
+      "API key",
+      "throttling"
+    ],
+    "difficulty": "mid",
+    "category": "backend"
+  },
+  {
+    "id": 15,
+    "question": "¿Cómo diseñarías un sistema de caché para una API con alta concurrencia?",
+    "ideal_answer": "Implementaría caché en múltiples niveles: caché en memoria (Redis o Memcached) para datos frecuentemente consultados, con TTL apropiado según la volatilidad del dato. Definiría una estrategia de invalidación (TTL, event-driven o cache-aside pattern). Para alta concurrencia, usaría bloqueos distribuidos para evitar el cache stampede. También consideraría CDN para assets estáticos y caché a nivel de HTTP con headers Cache-Control.",
+    "keywords": [
+      "caché",
+      "Redis",
+      "TTL",
+      "invalidación",
+      "cache-aside",
+      "cache stampede",
+      "concurrencia",
+      "CDN",
+      "Cache-Control"
+    ],
+    "difficulty": "senior",
+    "category": "backend"
+  },
+  {
+    "id": 16,
+    "question": "Explica el concepto de ACID en bases de datos y por qué es importante en sistemas transaccionales.",
+    "ideal_answer": "ACID garantiza la integridad de las transacciones: Atomicidad (la transacción se ejecuta completamente o no se ejecuta), Consistencia (la BD pasa de un estado válido a otro válido), Isolation (las transacciones concurrentes no se interfieren entre sí) y Durabilidad (los cambios confirmados persisten aunque haya fallos). Es crítico en sistemas financieros, bancarios o cualquier dominio donde la integridad del dato es no negociable.",
+    "keywords": [
+      "ACID",
+      "atomicidad",
+      "consistencia",
+      "isolation",
+      "durabilidad",
+      "transacción",
+      "integridad",
+      "concurrencia"
+    ],
+    "difficulty": "senior",
+    "category": "backend"
+  },
+  {
+    "id": 41,
+    "question": "¿Cómo diseñarías una estrategia de migración de base de datos sin downtime en producción?",
+    "ideal_answer": "La estrategia se basa en migraciones backward-compatible ejecutadas en múltiples fases. Primero, agregar la nueva columna como nullable (sin romper código existente). Segundo, desplegar el código que escribe en ambas columnas (vieja y nueva). Tercero, ejecutar un backfill gradual de los datos históricos. Cuarto, actualizar el código para leer solo de la nueva columna. Finalmente, eliminar la columna antigua. Este patrón expand-contract evita el lock de tabla que causaría downtime en tablas grandes.",
+    "keywords": [
+      "migración",
+      "downtime",
+      "backward-compatible",
+      "expand-contract",
+      "backfill",
+      "nullable",
+      "despliegue",
+      "lock de tabla"
+    ],
+    "difficulty": "senior",
+    "category": "backend"
+  },
+  {
+    "id": 42,
+    "question": "¿Qué es el patrón CQRS y cuándo tiene sentido separar los modelos de lectura y escritura?",
+    "ideal_answer": "CQRS (Command Query Responsibility Segregation) separa las operaciones de escritura (Commands) de las de lectura (Queries) en modelos distintos. El modelo de escritura garantiza consistencia e invariantes del dominio. El modelo de lectura está optimizado para consultas, posiblemente desnormalizado o en una base de datos diferente. Tiene sentido cuando las cargas de lectura y escritura son muy distintas en volumen o complejidad, cuando se necesita escalar cada lado independientemente, o en sistemas con Event Sourcing.",
+    "keywords": [
+      "CQRS",
+      "Command",
+      "Query",
+      "lectura",
+      "escritura",
+      "Event Sourcing",
+      "escalado",
+      "desnormalizado"
+    ],
+    "difficulty": "senior",
+    "category": "backend"
+  },
+  {
+    "id": 43,
+    "question": "¿Cómo implementarías el patrón Circuit Breaker en un sistema de microservicios?",
+    "ideal_answer": "El Circuit Breaker evita que un servicio siga llamando a un servicio caído, permitiendo recuperación gradual. Tiene tres estados: Closed (todo funciona, las llamadas pasan normalmente), Open (el servicio falló N veces consecutivas, las llamadas fallan rápido sin intentar la conexión) y Half-Open (prueba si el servicio se recuperó dejando pasar algunas llamadas). Se configura un umbral de fallos y un timeout de recuperación. En implementación se puede usar Resilience4j o implementar manualmente con un contador de fallos en Redis. Siempre debe acompañarse de un fallback.",
+    "keywords": [
+      "circuit breaker",
+      "Closed",
+      "Open",
+      "Half-Open",
+      "fallback",
+      "Resilience4j",
+      "tolerancia a fallos",
+      "microservicios"
+    ],
+    "difficulty": "senior",
+    "category": "backend"
+  },
+  {
+    "id": 17,
+    "question": "¿Qué es un DataFrame en pandas y cómo se diferencia de una lista de Python?",
+    "ideal_answer": "Un DataFrame es una estructura de datos bidimensional etiquetada (filas y columnas) de pandas, similar a una tabla de base de datos o una hoja de cálculo. A diferencia de una lista de Python, permite operaciones vectorizadas eficientes sobre columnas completas sin loops explícitos, maneja datos heterogéneos por columna, soporta indexación avanzada y está optimizado para operaciones de análisis de datos a gran escala.",
+    "keywords": [
+      "DataFrame",
+      "pandas",
+      "vectorizado",
+      "columnas",
+      "indexación",
+      "bidimensional",
+      "análisis de datos"
+    ],
+    "difficulty": "junior",
+    "category": "data"
+  },
+  {
+    "id": 18,
+    "question": "¿Qué es la normalización de datos y por qué es importante antes de entrenar un modelo de ML?",
+    "ideal_answer": "La normalización escala los valores de las features a un rango común (0-1 con MinMaxScaler) o distribución estándar (media 0, desviación 1 con StandardScaler). Es importante porque algoritmos como SVM, KNN o redes neuronales son sensibles a la escala de los datos: features con valores grandes dominarían el entrenamiento injustamente. También acelera la convergencia del gradiente descendente en redes neuronales.",
+    "keywords": [
+      "normalización",
+      "escalado",
+      "MinMaxScaler",
+      "StandardScaler",
+      "features",
+      "gradiente",
+      "convergencia",
+      "SVM",
+      "KNN"
+    ],
+    "difficulty": "junior",
+    "category": "data"
+  },
+  {
+    "id": 19,
+    "question": "Explica la diferencia entre overfitting y underfitting y cómo detectarlos.",
+    "ideal_answer": "Overfitting ocurre cuando el modelo memoriza los datos de entrenamiento pero generaliza mal en datos nuevos: alta accuracy en train, baja en test. Underfitting ocurre cuando el modelo es demasiado simple y no captura los patrones: baja accuracy tanto en train como en test. Se detectan comparando las métricas de train vs validation. Para el overfitting se aplica regularización (L1/L2), dropout o más datos. Para underfitting, un modelo más complejo o más features.",
+    "keywords": [
+      "overfitting",
+      "underfitting",
+      "generalización",
+      "regularización",
+      "L1",
+      "L2",
+      "dropout",
+      "train",
+      "validation",
+      "accuracy"
+    ],
+    "difficulty": "junior",
+    "category": "data"
+  },
+  {
+    "id": 44,
+    "question": "¿Cuál es la diferencia entre clasificación y regresión en machine learning?",
+    "ideal_answer": "La clasificación predice una etiqueta discreta: el output pertenece a una categoría (spam/no spam, tipo de flor, dígito del 0 al 9). La regresión predice un valor continuo numérico (precio de una casa, temperatura, ventas). Los algoritmos difieren: para clasificación se usan métricas como accuracy, precision, recall y F1-score; para regresión se usan RMSE, MAE o R². Algunos algoritmos como Random Forest o redes neuronales pueden hacer ambas cosas cambiando la función de activación y pérdida del output.",
+    "keywords": [
+      "clasificación",
+      "regresión",
+      "etiqueta",
+      "continuo",
+      "accuracy",
+      "F1-score",
+      "RMSE",
+      "output",
+      "predicción"
+    ],
+    "difficulty": "junior",
+    "category": "data"
+  },
+  {
+    "id": 45,
+    "question": "¿Qué es una matriz de confusión y qué información provee sobre un modelo de clasificación?",
+    "ideal_answer": "La matriz de confusión muestra el conteo de predicciones correctas e incorrectas organizadas por clase. Para clasificación binaria tiene cuatro celdas: True Positives (predijo positivo y era positivo), True Negatives, False Positives (predijo positivo pero era negativo) y False Negatives. De ella se derivan las métricas más importantes: Precision (TP/(TP+FP)), Recall o Sensibilidad (TP/(TP+FN)) y F1-score. Es especialmente útil con clases desbalanceadas donde la accuracy sola puede ser engañosa.",
+    "keywords": [
+      "matriz de confusión",
+      "True Positive",
+      "False Positive",
+      "False Negative",
+      "Precision",
+      "Recall",
+      "F1-score",
+      "desbalanceado"
+    ],
+    "difficulty": "junior",
+    "category": "data"
+  },
+  {
+    "id": 20,
+    "question": "¿Qué es la validación cruzada (cross-validation) y por qué es preferible a un simple train/test split?",
+    "ideal_answer": "La validación cruzada divide el dataset en k subconjuntos (folds). En cada iteración, usa k-1 folds para entrenar y 1 para validar, rotando el fold de validación. Al final promedia las métricas de las k iteraciones. Es preferible porque usa todos los datos tanto para entrenamiento como para validación, da una estimación más robusta y menos sesgada del rendimiento real, y reduce el impacto del split aleatorio.",
+    "keywords": [
+      "cross-validation",
+      "k-fold",
+      "folds",
+      "train",
+      "validación",
+      "estimación",
+      "sesgo",
+      "rendimiento"
+    ],
+    "difficulty": "mid",
+    "category": "data"
+  },
+  {
+    "id": 21,
+    "question": "¿Cómo manejarías un dataset con valores nulos en un proyecto de ML?",
+    "ideal_answer": "Depende del contexto: si una columna tiene más del 50-70% de nulos, probablemente se elimina. Si son pocos, se imputa: con la media o mediana para variables numéricas (mediana es más robusta ante outliers), con la moda para categóricas, o con técnicas avanzadas como KNN imputer o imputación múltiple. También se puede crear una feature binaria que indique si el valor era nulo, ya que la ausencia de dato puede ser informativa.",
+    "keywords": [
+      "valores nulos",
+      "imputación",
+      "media",
+      "mediana",
+      "moda",
+      "KNN imputer",
+      "outliers",
+      "feature engineering"
+    ],
+    "difficulty": "mid",
+    "category": "data"
+  },
+  {
+    "id": 22,
+    "question": "¿Qué es la similitud de coseno y cómo se aplica en sistemas de recomendación o NLP?",
+    "ideal_answer": "La similitud de coseno mide el ángulo entre dos vectores en un espacio multidimensional, independientemente de su magnitud. Un valor de 1 indica vectores idénticos en dirección, 0 indica ortogonalidad. En NLP se aplica comparando embeddings de textos para encontrar similitud semántica. En sistemas de recomendación, compara vectores de preferencias de usuarios o características de ítems para encontrar los más similares.",
+    "keywords": [
+      "similitud de coseno",
+      "vectores",
+      "embeddings",
+      "NLP",
+      "recomendación",
+      "semántica",
+      "ángulo",
+      "magnitud"
+    ],
+    "difficulty": "mid",
+    "category": "data"
+  },
+  {
+    "id": 46,
+    "question": "¿Qué es el Feature Engineering y cuáles son las técnicas más comunes?",
+    "ideal_answer": "El Feature Engineering es el proceso de crear, transformar o seleccionar variables para mejorar el rendimiento de un modelo de ML. Técnicas comunes: encoding de variables categóricas (One-Hot Encoding, Label Encoding, Target Encoding), extracción de fecha y hora (día de semana, hora, mes), interacciones entre features (multiplicar dos columnas), binning (convertir continuo en rangos discretos), y creación de features de dominio. Una buena feature puede mejorar el modelo más que cambiar el algoritmo. También incluye selección de features para reducir dimensionalidad y evitar el curse of dimensionality.",
+    "keywords": [
+      "feature engineering",
+      "encoding",
+      "One-Hot",
+      "binning",
+      "interacciones",
+      "selección de features",
+      "dimensionalidad",
+      "transformación"
+    ],
+    "difficulty": "mid",
+    "category": "data"
+  },
+  {
+    "id": 23,
+    "question": "Explica qué son los embeddings y cómo los usarías para evaluar respuestas de texto.",
+    "ideal_answer": "Los embeddings son representaciones vectoriales densas de texto en un espacio de alta dimensionalidad donde textos semánticamente similares quedan cercanos. Modelos como Sentence-BERT generan estos vectores. Para evaluar respuestas, se generaría el embedding de la respuesta del usuario y el de la respuesta ideal, luego se calcula la similitud de coseno entre ambos. Un score alto indica que el usuario capturó los conceptos clave, aunque use palabras distintas.",
+    "keywords": [
+      "embeddings",
+      "vectores",
+      "Sentence-BERT",
+      "similitud de coseno",
+      "semántica",
+      "representación",
+      "NLP",
+      "evaluación"
+    ],
+    "difficulty": "senior",
+    "category": "data"
+  },
+  {
+    "id": 24,
+    "question": "¿Qué es RAG (Retrieval-Augmented Generation) y cuáles son sus componentes principales?",
+    "ideal_answer": "RAG combina recuperación de información con generación de texto. Sus componentes son: una base de datos vectorial que almacena documentos como embeddings, un módulo de recuperación que dado un query busca los k documentos más similares, y un LLM que genera la respuesta usando el contexto recuperado. Resuelve el problema de las alucinaciones porque ancla la generación en información real y verificable, y permite incorporar conocimiento actualizado sin re-entrenar el modelo.",
+    "keywords": [
+      "RAG",
+      "retrieval",
+      "generación",
+      "base de datos vectorial",
+      "embeddings",
+      "LLM",
+      "alucinaciones",
+      "contexto"
+    ],
+    "difficulty": "senior",
+    "category": "data"
+  },
+  {
+    "id": 47,
+    "question": "¿Cómo diseñarías un pipeline de MLOps para gestionar el ciclo de vida de modelos en producción?",
+    "ideal_answer": "Un pipeline de MLOps cubre: versionado de datos y código (DVC, Git), entrenamiento reproducible en pipelines automatizados (Kubeflow, Airflow), registro de experimentos con métricas (MLflow, Weights & Biases), validación automática antes del despliegue, serving del modelo con versionado (MLflow Model Registry, SageMaker), monitoreo continuo de data drift y model drift en producción, y gates de calidad para reentrenamiento automático. El objetivo es tratar los modelos como software de primera clase con CI/CD propio.",
+    "keywords": [
+      "MLOps",
+      "MLflow",
+      "data drift",
+      "model drift",
+      "versionado",
+      "despliegue",
+      "monitoreo",
+      "reentrenamiento",
+      "pipeline"
+    ],
+    "difficulty": "senior",
+    "category": "data"
+  },
+  {
+    "id": 48,
+    "question": "¿Qué es la deriva de datos (data drift) y cómo la detectarías y mitigarías en producción?",
+    "ideal_answer": "Data drift ocurre cuando la distribución estadística de los datos de entrada cambia respecto a los datos de entrenamiento, degradando el rendimiento del modelo. Hay dos tipos: concept drift (cambia la relación entre features y target) y covariate drift (cambian las features de entrada). Para detectarlo se comparan distribuciones con tests estadísticos (Kolmogorov-Smirnov, Chi-cuadrado) o métricas de Population Stability Index. Para mitigarlo: reentrenamiento periódico, reentrenamiento disparado por alertas, o modelos adaptativos que aprenden online.",
+    "keywords": [
+      "data drift",
+      "concept drift",
+      "covariate drift",
+      "Kolmogorov-Smirnov",
+      "PSI",
+      "monitoreo",
+      "reentrenamiento",
+      "distribución"
+    ],
+    "difficulty": "senior",
+    "category": "data"
+  },
+  {
+    "id": 49,
+    "question": "¿Cómo abordarías el problema del sesgo algorítmico en un modelo de ML para decisiones de crédito?",
+    "ideal_answer": "El sesgo algorítmico ocurre cuando el modelo discrimina injustamente por atributos protegidos (género, raza, edad). El abordaje incluye: auditar el dataset de entrenamiento buscando proxies de atributos protegidos (código postal como proxy de raza), medir fairness con métricas como equalized odds, demographic parity o calibration by group, aplicar técnicas de debiasing en pre-procesamiento (resampling), procesamiento (regularización de fairness) o post-procesamiento (ajuste de umbrales por grupo). También es crítico el monitoreo continuo en producción y revisión humana para casos límite.",
+    "keywords": [
+      "sesgo algorítmico",
+      "fairness",
+      "equalized odds",
+      "demographic parity",
+      "atributos protegidos",
+      "debiasing",
+      "auditoría",
+      "discriminación"
+    ],
+    "difficulty": "senior",
+    "category": "data"
+  },
+  {
+    "id": 25,
+    "question": "¿Qué es Docker y cuál es la diferencia entre una imagen y un contenedor?",
+    "ideal_answer": "Docker es una plataforma de contenedores que permite empaquetar una aplicación con todas sus dependencias en unidades aisladas. Una imagen es una plantilla inmutable de solo lectura que define el entorno (sistema operativo, librerías, código). Un contenedor es una instancia en ejecución de una imagen, con su propio sistema de archivos temporal. Múltiples contenedores pueden ejecutarse desde la misma imagen.",
+    "keywords": [
+      "Docker",
+      "contenedor",
+      "imagen",
+      "aislamiento",
+      "dependencias",
+      "inmutable",
+      "instancia"
+    ],
+    "difficulty": "junior",
+    "category": "sistemas"
+  },
+  {
+    "id": 26,
+    "question": "¿Qué es CI/CD y cuáles son sus beneficios en el ciclo de desarrollo de software?",
+    "ideal_answer": "CI (Continuous Integration) es la práctica de integrar código frecuentemente en un repositorio compartido, ejecutando automáticamente tests y builds. CD (Continuous Delivery/Deployment) extiende esto automatizando el despliegue a producción. Los beneficios son: detección temprana de errores, reducción del riesgo de despliegues grandes, feedback rápido para el equipo, mayor confianza en el código y ciclos de entrega más cortos.",
+    "keywords": [
+      "CI/CD",
+      "integración continua",
+      "despliegue continuo",
+      "automatización",
+      "tests",
+      "pipeline",
+      "feedback",
+      "despliegue"
+    ],
+    "difficulty": "junior",
+    "category": "sistemas"
+  },
+  {
+    "id": 50,
+    "question": "¿Qué es el versionamiento semántico (SemVer) y cómo se aplica en el desarrollo de software?",
+    "ideal_answer": "SemVer define versiones con el formato MAJOR.MINOR.PATCH. PATCH se incrementa para corrección de bugs compatibles. MINOR se incrementa cuando se añade funcionalidad nueva compatible con versiones anteriores. MAJOR se incrementa cuando hay cambios incompatibles (breaking changes). Por ejemplo, pasar de 2.3.1 a 3.0.0 indica que el código existente que usa la v2 podría romperse. Esto permite a los consumidores de una librería saber cuándo actualizar es seguro y cuándo requiere adaptación.",
+    "keywords": [
+      "SemVer",
+      "MAJOR",
+      "MINOR",
+      "PATCH",
+      "breaking changes",
+      "versionado",
+      "compatibilidad",
+      "librería"
+    ],
+    "difficulty": "junior",
+    "category": "sistemas"
+  },
+  {
+    "id": 51,
+    "question": "¿Cuál es la diferencia entre HTTP y HTTPS y qué es TLS?",
+    "ideal_answer": "HTTP (HyperText Transfer Protocol) transmite datos en texto plano, siendo vulnerable a ataques de intermediario (man-in-the-middle). HTTPS es HTTP sobre TLS (Transport Layer Security), que cifra la comunicación entre cliente y servidor. TLS garantiza tres propiedades: confidencialidad (datos cifrados), integridad (los datos no fueron alterados en tránsito) y autenticación (el servidor es quien dice ser mediante certificados digitales firmados por una CA). El handshake TLS negocia los algoritmos de cifrado y establece las claves de sesión.",
+    "keywords": [
+      "HTTP",
+      "HTTPS",
+      "TLS",
+      "cifrado",
+      "certificado",
+      "man-in-the-middle",
+      "CA",
+      "autenticación",
+      "integridad"
+    ],
+    "difficulty": "junior",
+    "category": "sistemas"
+  },
+  {
+    "id": 27,
+    "question": "¿Qué es un sistema de mensajería asíncrona como Kafka o RabbitMQ y cuándo lo usarías?",
+    "ideal_answer": "Son sistemas que permiten comunicación desacoplada entre servicios mediante mensajes. El productor envía mensajes a una cola o topic sin esperar respuesta. El consumidor los procesa de forma independiente. Kafka está orientado a alto throughput y persistencia de eventos (event streaming). RabbitMQ es ideal para colas de tareas y mensajería más tradicional. Se usan para desacoplar microservicios, manejar picos de carga, procesamiento asíncrono y garantizar la entrega de mensajes.",
+    "keywords": [
+      "Kafka",
+      "RabbitMQ",
+      "mensajería asíncrona",
+      "productor",
+      "consumidor",
+      "cola",
+      "desacoplamiento",
+      "microservicios",
+      "event streaming"
+    ],
+    "difficulty": "mid",
+    "category": "sistemas"
+  },
+  {
+    "id": 28,
+    "question": "Explica los principios SOLID y da un ejemplo de cómo el principio de responsabilidad única mejora el código.",
+    "ideal_answer": "SOLID: S (Single Responsibility - una clase, una razón de cambio), O (Open/Closed - abierto a extensión, cerrado a modificación), L (Liskov Substitution - los subtipos deben sustituir a sus tipos base), I (Interface Segregation - interfaces específicas mejor que una general), D (Dependency Inversion - depender de abstracciones, no de implementaciones). El SRP mejora el código porque una clase con una sola responsabilidad es más fácil de testear, mantener y reutilizar sin efectos secundarios inesperados.",
+    "keywords": [
+      "SOLID",
+      "Single Responsibility",
+      "Open/Closed",
+      "Liskov",
+      "Interface Segregation",
+      "Dependency Inversion",
+      "responsabilidad",
+      "abstracción"
+    ],
+    "difficulty": "mid",
+    "category": "sistemas"
+  },
+  {
+    "id": 52,
+    "question": "¿Qué es Infrastructure as Code (IaC) y cuáles son sus ventajas sobre la configuración manual?",
+    "ideal_answer": "IaC es la práctica de gestionar y aprovisionar infraestructura mediante archivos de configuración declarativos o scripts, en lugar de configuración manual. Herramientas como Terraform, Ansible o CloudFormation permiten definir servidores, redes y servicios en código. Ventajas: reproducibilidad (el mismo código da el mismo ambiente), versionado en Git (historial de cambios), idempotencia (aplicar el mismo config múltiples veces da el mismo resultado), automatización del ambiente de desarrollo, staging y producción, y reducción de errores humanos por configuración manual.",
+    "keywords": [
+      "IaC",
+      "Terraform",
+      "Ansible",
+      "declarativo",
+      "idempotente",
+      "reproducibilidad",
+      "automatización",
+      "infraestructura"
+    ],
+    "difficulty": "mid",
+    "category": "sistemas"
+  },
+  {
+    "id": 53,
+    "question": "¿Cómo funciona el load balancing y cuáles son las estrategias más comunes?",
+    "ideal_answer": "Un load balancer distribuye el tráfico entrante entre múltiples instancias de un servicio para evitar sobrecarga y mejorar disponibilidad. Las estrategias más comunes son: Round Robin (distribuye en orden cíclico, simple pero sin considerar carga), Least Connections (dirige al servidor con menos conexiones activas), IP Hash (misma IP siempre va al mismo servidor, útil para sesiones), Weighted (servidores con más capacidad reciben más tráfico) y Health-based (solo envía a instancias saludables, detecta fallas automáticamente). Puede operar en capa 4 (TCP) o capa 7 (HTTP/HTTPS, con routing por path o header).",
+    "keywords": [
+      "load balancer",
+      "Round Robin",
+      "Least Connections",
+      "IP Hash",
+      "capa 7",
+      "disponibilidad",
+      "escalado",
+      "health check"
+    ],
+    "difficulty": "mid",
+    "category": "sistemas"
+  },
+  {
+    "id": 29,
+    "question": "¿Qué es Kubernetes y qué problema resuelve que Docker por sí solo no resuelve?",
+    "ideal_answer": "Kubernetes es un orquestador de contenedores que gestiona el despliegue, escalado y operación de aplicaciones en contenedores a escala. Docker por sí solo crea y ejecuta contenedores en una máquina, pero no gestiona múltiples instancias en varios servidores. Kubernetes resuelve: alta disponibilidad (reinicia contenedores caídos), escalado automático según carga, balanceo de carga, rolling updates sin downtime, gestión de secrets y configuración, y service discovery.",
+    "keywords": [
+      "Kubernetes",
+      "orquestación",
+      "escalado",
+      "alta disponibilidad",
+      "balanceo de carga",
+      "rolling update",
+      "contenedores",
+      "pods"
+    ],
+    "difficulty": "senior",
+    "category": "sistemas"
+  },
+  {
+    "id": 30,
+    "question": "¿Cómo diseñarías una arquitectura de microservicios para un sistema de e-commerce con alta disponibilidad?",
+    "ideal_answer": "Dividiría en servicios por dominio: usuarios, catálogo, inventario, pedidos, pagos y notificaciones. Usaría un API Gateway como punto de entrada único. Comunicación síncrona vía REST/gRPC para operaciones que requieren respuesta inmediata, y asíncrona vía Kafka para eventos como confirmación de pago. Cada servicio tendría su propia base de datos (database per service). Implementaría circuit breakers (Hystrix/Resilience4j), health checks, distributed tracing (Jaeger) y un service mesh (Istio) para observabilidad.",
+    "keywords": [
+      "microservicios",
+      "API Gateway",
+      "circuit breaker",
+      "database per service",
+      "event driven",
+      "Kafka",
+      "gRPC",
+      "service mesh",
+      "observabilidad"
+    ],
+    "difficulty": "senior",
+    "category": "sistemas"
+  },
+  {
+    "id": 54,
+    "question": "¿Cómo diseñarías una estrategia de observabilidad para un sistema distribuido?",
+    "ideal_answer": "La observabilidad se construye sobre tres pilares: Logs (registros de eventos estructurados, idealmente en JSON, centralizados en ELK Stack o Loki), Métricas (medidas numéricas en el tiempo como latencia, throughput y tasas de error, recolectadas con Prometheus y visualizadas en Grafana), y Trazas distribuidas (seguimiento del request a través de múltiples servicios con OpenTelemetry y Jaeger o Zipkin). Complementando con alertas en los SLOs/SLAs del sistema. La clave es correlacionar los tres pilares usando un trace ID común en logs y trazas para debuggear incidentes eficientemente.",
+    "keywords": [
+      "observabilidad",
+      "logs",
+      "métricas",
+      "trazas",
+      "OpenTelemetry",
+      "Prometheus",
+      "Grafana",
+      "distributed tracing",
+      "SLO",
+      "correlación"
+    ],
+    "difficulty": "senior",
+    "category": "sistemas"
+  },
+  {
+    "id": 55,
+    "question": "¿Qué es un Dockerfile y cuáles son sus instrucciones más importantes?",
+    "ideal_answer": "Un Dockerfile es un archivo de texto con instrucciones para construir una imagen Docker de forma automatizada y reproducible. Las instrucciones más importantes son: FROM, que define la imagen base; RUN, que ejecuta comandos durante la construcción; COPY/ADD, que copian archivos al contenedor; WORKDIR, que establece el directorio de trabajo; ENV, que define variables de entorno; EXPOSE, que documenta el puerto que usa la aplicación; CMD y ENTRYPOINT, que definen el comando por defecto al iniciar el contenedor. Una buena práctica es ordenar las instrucciones de menos a más cambiantes para aprovechar el cache de capas y reducir el tamaño final de la imagen.",
+    "keywords": [
+      "Dockerfile",
+      "FROM",
+      "RUN",
+      "COPY",
+      "CMD",
+      "ENTRYPOINT",
+      "imagen Docker"
+    ],
+    "difficulty": "junior",
+    "category": "devops"
+  },
+  {
+    "id": 56,
+    "question": "¿Cuál es la diferencia entre un volumen y un bind mount en Docker?",
+    "ideal_answer": "Ambos permiten persistir datos más allá del ciclo de vida de un contenedor, pero difieren en su gestión. Un volumen es administrado completamente por Docker, se almacena en un área del sistema de archivos controlada por Docker (/var/lib/docker/volumes) y es la opción recomendada para producción porque es portable, fácil de respaldar y no depende de la estructura del host. Un bind mount mapea un directorio o archivo específico del host directamente al contenedor, lo que lo hace dependiente de la estructura del sistema de archivos del host. Los bind mounts son útiles en desarrollo para compartir código fuente en tiempo real, pero en producción los volúmenes ofrecen mejor aislamiento, rendimiento y portabilidad.",
+    "keywords": [
+      "volumen",
+      "bind mount",
+      "persistencia",
+      "Docker",
+      "host",
+      "contenedor",
+      "almacenamiento"
+    ],
+    "difficulty": "junior",
+    "category": "devops"
+  },
+  {
+    "id": 57,
+    "question": "¿Qué es un pipeline de CI/CD y cuáles son sus etapas principales?",
+    "ideal_answer": "Un pipeline de CI/CD es un conjunto automatizado de pasos que permite integrar, validar y desplegar código de forma continua y confiable. CI (Continuous Integration) se enfoca en integrar cambios frecuentemente mediante build y tests automáticos. CD puede ser Continuous Delivery, donde el despliegue es manual tras la validación, o Continuous Deployment, donde es totalmente automático. Las etapas principales son: Source (trigger por push/PR), Build (compilación y empaquetado), Test (unitarios, integración, E2E), Security Scan (análisis de vulnerabilidades), Artifact Registry (almacenar imagen/artefacto), Deploy to Staging (ambiente de pruebas), Smoke Tests, y finalmente Deploy to Production. Herramientas comunes incluyen GitHub Actions, GitLab CI, Jenkins y CircleCI.",
+    "keywords": [
+      "CI/CD",
+      "pipeline",
+      "integración continua",
+      "despliegue",
+      "automatización",
+      "GitHub Actions",
+      "etapas"
+    ],
+    "difficulty": "junior",
+    "category": "devops"
+  },
+  {
+    "id": 58,
+    "question": "¿Qué es Helm y cuál es su rol en Kubernetes?",
+    "ideal_answer": "Helm es el gestor de paquetes oficial para Kubernetes, frecuentemente descrito como el 'apt' o 'npm' de Kubernetes. Su rol principal es simplificar el despliegue y gestión de aplicaciones en clústeres Kubernetes mediante el uso de Charts, que son paquetes de recursos YAML parametrizados. Helm permite templating con variables para reutilizar configuraciones en distintos ambientes, manejo de dependencias entre servicios, versionado y rollback de releases, y la capacidad de instalar aplicaciones complejas como bases de datos o ingress controllers con un solo comando. Un Chart contiene templates de Deployments, Services, ConfigMaps e Ingress, y un archivo values.yaml donde se definen los parámetros configurables. Esto reduce la duplicación de YAML y facilita la gestión del ciclo de vida de aplicaciones en Kubernetes.",
+    "keywords": [
+      "Helm",
+      "Kubernetes",
+      "Charts",
+      "templating",
+      "package manager",
+      "values.yaml",
+      "release"
+    ],
+    "difficulty": "mid",
+    "category": "devops"
+  },
+  {
+    "id": 59,
+    "question": "¿Cómo implementarías una estrategia de rollback automático en Kubernetes?",
+    "ideal_answer": "Implementaría rollback automático combinando varias capas de Kubernetes y herramientas externas. Primero, aprovecharía los Deployments nativos de Kubernetes que mantienen un historial de revisiones, permitiendo kubectl rollout undo para rollback manual. Para automatizarlo, configuraría liveness y readiness probes correctamente para que Kubernetes detecte pods no saludables. Usaría estrategia RollingUpdate con maxSurge y maxUnavailable apropiados. Implementaría Argo Rollouts o Flagger para despliegues canary o blue-green con análisis automático de métricas como error rate y latencia desde Prometheus. Si las métricas superan umbrales definidos durante un periodo de análisis, el rollback ocurre automáticamente. Complementaría con alertas en el pipeline de CD que ejecuten kubectl rollout undo si los smoke tests post-deploy fallan.",
+    "keywords": [
+      "rollback",
+      "Kubernetes",
+      "liveness probe",
+      "readiness probe",
+      "Argo Rollouts",
+      "canary",
+      "RollingUpdate"
+    ],
+    "difficulty": "mid",
+    "category": "devops"
+  },
+  {
+    "id": 60,
+    "question": "¿Cómo diseñarías un pipeline de CI/CD con validaciones de seguridad (DevSecOps)?",
+    "ideal_answer": "Integraría seguridad en cada fase del pipeline siguiendo el principio shift-left. En la etapa de código fuente: SAST (Static Application Security Testing) con herramientas como SonarQube o Semgrep para detectar vulnerabilidades en el código. En build: análisis de dependencias con OWASP Dependency-Check o Snyk para detectar CVEs en librerías de terceros. Al construir la imagen Docker: escaneo con Trivy o Clair para vulnerabilidades en la imagen base y paquetes del OS. En staging: DAST (Dynamic Application Security Testing) con OWASP ZAP contra la aplicación desplegada. Policies de infraestructura con OPA/Conftest para validar manifiestos de Kubernetes. Secret scanning con GitGuardian o TruffleHog para evitar credenciales en el código. Todo con quality gates configurados para bloquear el pipeline ante vulnerabilidades críticas.",
+    "keywords": [
+      "DevSecOps",
+      "SAST",
+      "DAST",
+      "Snyk",
+      "Trivy",
+      "shift-left",
+      "vulnerability scanning"
+    ],
+    "difficulty": "mid",
+    "category": "devops"
+  },
+  {
+    "id": 61,
+    "question": "¿Cómo diseñarías una estrategia de GitOps para múltiples ambientes?",
+    "ideal_answer": "Implementaría GitOps usando Git como única fuente de verdad con herramientas como ArgoCD o Flux. La estrategia para múltiples ambientes se basa en separar el repositorio de aplicación del repositorio de configuración de infraestructura. En el repo de configs, usaría una estructura de directorios por ambiente (dev, staging, prod) con Helm values o Kustomize overlays específicos para cada uno. El flujo sería: el pipeline de CI construye y publica la imagen con tag inmutable basado en el commit SHA, luego actualiza automáticamente el manifiesto del ambiente de dev en el repo de configs. Un humano o proceso automatizado promueve cambios de dev a staging y de staging a prod mediante PRs con aprobaciones requeridas. ArgoCD detecta cambios en el repo y sincroniza el clúster. La auditoría queda en el historial de Git y los rollbacks son simples reverts.",
+    "keywords": [
+      "GitOps",
+      "ArgoCD",
+      "Flux",
+      "Kustomize",
+      "Helm",
+      "múltiples ambientes",
+      "infraestructura como código"
+    ],
+    "difficulty": "senior",
+    "category": "devops"
+  },
+  {
+    "id": 62,
+    "question": "Explica cómo implementarías chaos engineering en producción.",
+    "ideal_answer": "Chaos engineering es la práctica de experimentar deliberadamente con fallas en producción para descubrir debilidades antes de que causen incidentes reales. Lo implementaría siguiendo los principios de Chaos Monkey de Netflix: primero definiría el estado estacionario del sistema medido con métricas clave (latencia p99, tasa de errores, throughput). Comenzaría en ambientes no productivos con experimentos controlados usando herramientas como Chaos Mesh, LitmusChaos o AWS Fault Injection Service. Los experimentos incluirían: matar pods aleatorios, simular latencia de red, agotar recursos de CPU/memoria, fallar dependencias externas. En producción usaría GameDays programados con alcance limitado, blast radius controlado y kill switch inmediato. Cada experimento tendría hipótesis, métricas de éxito, duración máxima y runbook de recuperación. Los resultados alimentan mejoras en resiliencia, SLOs y runbooks.",
+    "keywords": [
+      "chaos engineering",
+      "Chaos Mesh",
+      "resiliencia",
+      "blast radius",
+      "GameDay",
+      "estado estacionario",
+      "fault injection"
+    ],
+    "difficulty": "senior",
+    "category": "devops"
+  },
+  {
+    "id": 63,
+    "question": "¿Qué es platform engineering y en qué se diferencia de DevOps?",
+    "ideal_answer": "Platform engineering es la disciplina de construir y mantener plataformas internas de desarrollo (Internal Developer Platforms, IDPs) que permiten a los equipos de producto desplegar y operar software de forma autónoma sin necesidad de conocimiento profundo de infraestructura. Mientras que DevOps es una cultura y conjunto de prácticas que busca romper silos entre desarrollo y operaciones (tú construyes, tú operas), platform engineering aplica principios de ingeniería de producto al desarrollo de herramientas internas. El platform team trata a los desarrolladores como clientes internos, construyendo abstracciones de autoservicio sobre Kubernetes, CI/CD, observabilidad y redes. La diferencia clave es que DevOps democratiza la responsabilidad operacional, mientras que platform engineering centraliza la complejidad para que los desarrolladores se enfoquen en entregar valor de negocio. Herramientas típicas incluyen Backstage, Crossplane y Port.",
+    "keywords": [
+      "platform engineering",
+      "DevOps",
+      "Internal Developer Platform",
+      "Backstage",
+      "autoservicio",
+      "abstracciones",
+      "developer experience"
+    ],
+    "difficulty": "senior",
+    "category": "devops"
+  },
+  {
+    "id": 64,
+    "question": "¿Qué es SQL injection y cómo se previene?",
+    "ideal_answer": "SQL injection es una vulnerabilidad de seguridad en la que un atacante inserta o manipula consultas SQL a través de entradas del usuario no sanitizadas, pudiendo leer, modificar o eliminar datos de la base de datos, y en casos extremos ejecutar comandos del sistema operativo. Ocurre cuando se concatenan directamente inputs del usuario en queries SQL. Por ejemplo, un usuario puede ingresar ' OR '1'='1 para bypasear autenticación. La prevención principal es usar consultas parametrizadas (prepared statements) o ORMs que las generen automáticamente, nunca concatenar strings. Otras medidas incluyen: validación y sanitización de inputs, principio de mínimo privilegio en usuarios de base de datos, Web Application Firewall (WAF), y nunca mostrar mensajes de error detallados de la base de datos al usuario.",
+    "keywords": [
+      "SQL injection",
+      "prepared statements",
+      "sanitización",
+      "consultas parametrizadas",
+      "ORM",
+      "WAF",
+      "vulnerabilidad"
+    ],
+    "difficulty": "junior",
+    "category": "seguridad"
+  },
+  {
+    "id": 65,
+    "question": "¿Qué es CORS y por qué es importante en seguridad web?",
+    "ideal_answer": "CORS (Cross-Origin Resource Sharing) es un mecanismo de seguridad del navegador que controla cómo las páginas web pueden solicitar recursos de un dominio diferente al de la página misma. Por defecto, los navegadores bloquean las solicitudes cross-origin por la política Same-Origin Policy (SOP). CORS permite a los servidores indicar qué orígenes externos tienen permiso de acceder a sus recursos mediante headers HTTP como Access-Control-Allow-Origin. Su importancia en seguridad radica en prevenir ataques CSRF (Cross-Site Request Forgery) donde un sitio malicioso intenta hacer peticiones autenticadas a otro dominio en nombre del usuario. Una mala configuración de CORS, como usar wildcard (*) en endpoints con credenciales, puede exponer datos sensibles. El servidor debe configurar políticas estrictas permitiendo solo los orígenes confiables necesarios.",
+    "keywords": [
+      "CORS",
+      "Same-Origin Policy",
+      "Access-Control-Allow-Origin",
+      "CSRF",
+      "cross-origin",
+      "headers HTTP",
+      "seguridad web"
+    ],
+    "difficulty": "junior",
+    "category": "seguridad"
+  },
+  {
+    "id": 66,
+    "question": "¿Cuál es la diferencia entre cifrado simétrico y asimétrico?",
+    "ideal_answer": "El cifrado simétrico usa la misma clave para cifrar y descifrar información. Es muy rápido y eficiente computacionalmente, ideal para cifrar grandes volúmenes de datos. El principal problema es el intercambio seguro de la clave entre las partes. Algoritmos comunes son AES y ChaCha20. El cifrado asimétrico usa un par de claves matemáticamente relacionadas: una pública para cifrar y una privada para descifrar. Permite intercambiar información de forma segura sin necesidad de compartir secretos previamente, y es la base de firmas digitales y certificados SSL/TLS. Es mucho más lento que el simétrico. Algoritmos comunes son RSA y ECC. En la práctica, los sistemas modernos como HTTPS los combinan: usan cifrado asimétrico para intercambiar de forma segura una clave simétrica de sesión, y luego cifrado simétrico para la comunicación.",
+    "keywords": [
+      "cifrado simétrico",
+      "cifrado asimétrico",
+      "AES",
+      "RSA",
+      "clave pública",
+      "clave privada",
+      "TLS"
+    ],
+    "difficulty": "junior",
+    "category": "seguridad"
+  },
+  {
+    "id": 67,
+    "question": "¿Qué es el OWASP Top 10 y cuáles son las vulnerabilidades más críticas?",
+    "ideal_answer": "El OWASP Top 10 es una lista publicada por el Open Web Application Security Project que documenta las diez vulnerabilidades de seguridad más críticas y prevalentes en aplicaciones web, actualizada periódicamente con base en datos reales de vulnerabilidades. Es el estándar de referencia de la industria para seguridad en aplicaciones. Las vulnerabilidades más críticas de la versión actual incluyen: Broken Access Control (control de acceso roto), que permite acceder a recursos sin autorización; Cryptographic Failures, relacionado con mal uso o ausencia de cifrado; Injection (SQL, LDAP, OS command injection); Insecure Design, que aborda fallas en la fase de diseño; Security Misconfiguration, configuraciones por defecto inseguras; Vulnerable and Outdated Components, usar librerías con CVEs conocidos; y Identification and Authentication Failures. Conocer el OWASP Top 10 es fundamental para hacer revisiones de seguridad en código y arquitectura.",
+    "keywords": [
+      "OWASP Top 10",
+      "Broken Access Control",
+      "Injection",
+      "Security Misconfiguration",
+      "vulnerabilidades",
+      "seguridad web",
+      "CVE"
+    ],
+    "difficulty": "mid",
+    "category": "seguridad"
+  },
+  {
+    "id": 68,
+    "question": "¿Cómo implementarías autenticación multi-factor (MFA) de forma segura?",
+    "ideal_answer": "Implementaría MFA añadiendo una capa adicional de verificación después de la contraseña. El método más seguro y recomendado actualmente es TOTP (Time-based One-Time Password) según RFC 6238, usando apps como Google Authenticator o Authy. La implementación incluye: generar un secreto único por usuario (HMAC-SHA1), almacenarlo cifrado en la base de datos, presentar un QR code para que el usuario lo registre en su app, y en cada login verificar el código de 6 dígitos con ventana de tolerancia de ±1 periodo. Evitar SMS como segundo factor por vulnerabilidad a SIM swapping. Implementar WebAuthn/FIDO2 con llaves de seguridad físicas o biometría del dispositivo para máxima seguridad. Generar códigos de recuperación de un solo uso para acceso de emergencia, almacenados como hashes. Registrar todos los eventos de MFA para auditoría y alertar por intentos fallidos repetidos.",
+    "keywords": [
+      "MFA",
+      "TOTP",
+      "WebAuthn",
+      "FIDO2",
+      "autenticación",
+      "OTP",
+      "SIM swapping"
+    ],
+    "difficulty": "mid",
+    "category": "seguridad"
+  },
+  {
+    "id": 69,
+    "question": "¿Qué es un JWT y cuáles son sus vulnerabilidades más comunes?",
+    "ideal_answer": "JWT (JSON Web Token) es un estándar (RFC 7519) para transmitir información de forma segura entre partes como un objeto JSON firmado digitalmente. Tiene tres partes codificadas en Base64: header (algoritmo y tipo), payload (claims/datos) y signature (firma). Las vulnerabilidades más comunes son: el ataque 'algorithm confusion' o 'none algorithm', donde se manipula el header para usar alg:none y el servidor acepta tokens sin firma; la confusión RS256/HS256, donde si el servidor acepta ambos, un atacante firma con la clave pública usando HS256; ausencia de validación de expiración (exp claim); almacenar datos sensibles en el payload sin cifrar ya que es solo Base64, no cifrado; y key confusion en bibliotecas con vulnerabilidades conocidas. Buenas prácticas: especificar el algoritmo esperado en el servidor, usar librerías actualizadas, establecer tiempos de expiración cortos, implementar lista de revocación para tokens invalidados.",
+    "keywords": [
+      "JWT",
+      "JSON Web Token",
+      "algorithm confusion",
+      "signature",
+      "claims",
+      "RS256",
+      "HS256"
+    ],
+    "difficulty": "mid",
+    "category": "seguridad"
+  },
+  {
+    "id": 70,
+    "question": "¿Cómo diseñarías una arquitectura de zero-trust security?",
+    "ideal_answer": "Zero-trust parte del principio 'nunca confíes, siempre verifica', eliminando el concepto de red interna segura. La arquitectura se basa en varios pilares. Identidad como perímetro: cada usuario, dispositivo y servicio debe autenticarse y autorizarse en cada solicitud mediante SSO con MFA y gestión de identidades (IdP como Okta o Azure AD). Microsegmentación de red: en lugar de perimeters amplios, cada servicio solo puede comunicarse con los que necesita, aplicado mediante service mesh (Istio) con mTLS entre microservicios. Acceso de mínimo privilegio: RBAC granular con Just-In-Time access para privilegios elevados. Device trust: verificación del estado y compliance del dispositivo antes de otorgar acceso. Inspección continua del tráfico cifrado. Logging y monitoreo exhaustivo de todos los accesos. Herramientas clave: SPIFFE/SPIRE para identidades de workloads, OPA para políticas de autorización y SIEM para detección de anomalías.",
+    "keywords": [
+      "zero-trust",
+      "microsegmentación",
+      "mTLS",
+      "RBAC",
+      "service mesh",
+      "identidad",
+      "mínimo privilegio"
+    ],
+    "difficulty": "senior",
+    "category": "seguridad"
+  },
+  {
+    "id": 71,
+    "question": "¿Qué es threat modeling y cómo aplicarías STRIDE?",
+    "ideal_answer": "Threat modeling es el proceso estructurado de identificar, comunicar y entender amenazas y mitigaciones en el contexto del diseño de un sistema, aplicado en la fase de diseño para detectar vulnerabilidades antes de escribir código. STRIDE es la metodología más usada, desarrollada por Microsoft, donde cada letra representa una categoría de amenaza: Spoofing (suplantación de identidad, mitigado con autenticación fuerte), Tampering (manipulación de datos, mitigado con integridad/firmas), Repudiation (negar acciones, mitigado con logging y auditoría), Information Disclosure (exposición de datos, mitigado con cifrado y control de acceso), Denial of Service (denegación de servicio, mitigado con rate limiting y redundancia), y Elevation of Privilege (escalada de privilegios, mitigada con principio de mínimo privilegio). El proceso incluye: diagramar el sistema con DFD (Data Flow Diagrams), identificar trust boundaries, aplicar STRIDE a cada componente y flujo de datos, y crear un backlog de mitigaciones priorizadas por riesgo.",
+    "keywords": [
+      "threat modeling",
+      "STRIDE",
+      "DFD",
+      "trust boundaries",
+      "seguridad",
+      "diseño seguro",
+      "mitigaciones"
+    ],
+    "difficulty": "senior",
+    "category": "seguridad"
+  },
+  {
+    "id": 72,
+    "question": "¿Cómo harías un pentest básico de una API REST?",
+    "ideal_answer": "Un pentest de API REST sigue una metodología estructurada. Fase de reconocimiento: recopilar documentación (Swagger/OpenAPI), identificar endpoints con herramientas como FFUF o dirsearch, analizar headers de respuesta para obtener información del stack tecnológico. Autenticación y autorización: probar ausencia o bypass de autenticación, IDOR (Insecure Direct Object References) modificando IDs en URLs, pruebas de escalada de privilegios cambiando roles en JWTs, y tests de BOLA (Broken Object Level Authorization). Validación de inputs: fuzzing de parámetros para detectar SQL injection, NoSQL injection, SSRF, y command injection usando Burp Suite o OWASP ZAP. Rate limiting: verificar si existe protección contra fuerza bruta y scraping. Business logic flaws: casos de uso no convencionales como negativos en precios o saltarse pasos de flujos. Datos sensibles: verificar si la API expone información excesiva. Todo documentado con evidencia, severidad CVSS y recomendaciones de remediación.",
+    "keywords": [
+      "pentest",
+      "API REST",
+      "IDOR",
+      "BOLA",
+      "Burp Suite",
+      "fuzzing",
+      "OWASP ZAP"
+    ],
+    "difficulty": "senior",
+    "category": "seguridad"
+  },
+  {
+    "id": 73,
+    "question": "¿Qué diferencia hay entre arquitectura monolítica y de microservicios?",
+    "ideal_answer": "Una arquitectura monolítica es aquella donde toda la aplicación se despliega como una única unidad: frontend, backend, lógica de negocio y acceso a datos están acoplados en un mismo proceso. Es más sencilla de desarrollar inicialmente, fácil de depurar y tiene comunicación interna rápida. Sus desventajas aparecen con el crecimiento: despliegues acoplados, escalado poco granular, dificultad para adoptar nuevas tecnologías y equipos bloqueados entre sí. Los microservicios dividen la aplicación en servicios pequeños, independientes y con responsabilidad única, cada uno con su propia base de datos y desplegable de forma autónoma. Permiten escalar componentes individualmente, usar diferentes tecnologías por servicio y equipos independientes. Sin embargo, introducen complejidad operacional: comunicación por red con latencia, consistencia eventual, trazabilidad distribuida y la necesidad de orquestación con Kubernetes.",
+    "keywords": [
+      "monolito",
+      "microservicios",
+      "despliegue",
+      "escalado",
+      "acoplamiento",
+      "independencia",
+      "complejidad operacional"
+    ],
+    "difficulty": "junior",
+    "category": "arquitectura"
+  },
+  {
+    "id": 74,
+    "question": "¿Qué es el patrón Singleton y cuáles son sus pros y contras?",
+    "ideal_answer": "El patrón Singleton es un patrón de diseño creacional que garantiza que una clase tenga una única instancia en toda la aplicación y proporciona un punto de acceso global a ella. Se implementa con un constructor privado y un método estático que devuelve siempre la misma instancia, creándola solo la primera vez. Sus ventajas incluyen: control estricto sobre el acceso a recursos compartidos como conexiones a bases de datos o configuración global, y ahorro de memoria al evitar instanciación múltiple. Sus desventajas son significativas: introduce estado global haciendo el código difícil de razonar y testear, crea acoplamiento fuerte entre componentes, viola el principio de responsabilidad única al gestionar su propio ciclo de vida, y puede generar condiciones de carrera en ambientes multihilo si no se implementa correctamente con double-checked locking o inicialización eager. Muchos lo consideran un antipatrón en favor de la inyección de dependencias.",
+    "keywords": [
+      "Singleton",
+      "patrón de diseño",
+      "instancia única",
+      "estado global",
+      "inyección de dependencias",
+      "testing",
+      "antipatrón"
+    ],
+    "difficulty": "junior",
+    "category": "arquitectura"
+  },
+  {
+    "id": 75,
+    "question": "¿Qué es una arquitectura en capas (layered architecture)?",
+    "ideal_answer": "La arquitectura en capas, también conocida como arquitectura N-tier, organiza el código en grupos horizontales donde cada capa tiene una responsabilidad específica y solo puede comunicarse con las capas adyacentes. El modelo más común tiene 4 capas: Presentación (UI o API controllers), que maneja la interacción con el usuario o cliente; Lógica de Negocio o Application Layer, que contiene las reglas y casos de uso; Capa de Dominio, con las entidades y reglas del negocio core; y Capa de Datos o Persistencia, que gestiona el acceso a la base de datos mediante repositorios. Sus ventajas son: separación de responsabilidades, facilidad de mantenimiento, testabilidad de cada capa de forma independiente y familiaridad para la mayoría de desarrolladores. Su principal desventaja es el riesgo de crear una arquitectura lasaña donde cambios simples requieren modificar todas las capas, y puede generar objetos de transferencia de datos redundantes entre capas.",
+    "keywords": [
+      "arquitectura en capas",
+      "N-tier",
+      "presentación",
+      "lógica de negocio",
+      "persistencia",
+      "separación de responsabilidades",
+      "dominio"
+    ],
+    "difficulty": "junior",
+    "category": "arquitectura"
+  },
+  {
+    "id": 76,
+    "question": "¿Qué es Event-Driven Architecture (EDA) y cuándo usarla?",
+    "ideal_answer": "Event-Driven Architecture es un estilo arquitectónico donde los componentes del sistema se comunican mediante la producción, detección y consumo de eventos. Un evento representa un hecho que ocurrió en el sistema (OrderPlaced, PaymentProcessed). Los componentes son productores y consumidores desacoplados que no se conocen entre sí, comunicándose a través de un message broker como Kafka, RabbitMQ o AWS EventBridge. Los patrones principales son event notification, event-carried state transfer y event sourcing. EDA es ideal cuando se necesita alto desacoplamiento entre servicios, procesamiento asíncrono de tareas de larga duración, alta escalabilidad con múltiples consumidores independientes, auditoría de cambios mediante el historial de eventos, e integración entre sistemas heterogéneos. No es adecuada cuando se requiere consistencia inmediata (strong consistency), flujos síncronos simples o equipos pequeños sin experiencia en sistemas distribuidos, ya que introduce complejidad en el debugging y la trazabilidad.",
+    "keywords": [
+      "Event-Driven Architecture",
+      "eventos",
+      "Kafka",
+      "message broker",
+      "desacoplamiento",
+      "asíncrono",
+      "event sourcing"
+    ],
+    "difficulty": "mid",
+    "category": "arquitectura"
+  },
+  {
+    "id": 77,
+    "question": "¿Qué es el patrón Saga para transacciones distribuidas?",
+    "ideal_answer": "El patrón Saga es una solución para gestionar transacciones de larga duración en sistemas de microservicios donde no se puede usar ACID distribuido (two-phase commit). Una Saga es una secuencia de transacciones locales, donde cada paso publica un evento o mensaje para iniciar el siguiente, y si un paso falla se ejecutan transacciones compensatorias para deshacer los cambios anteriores. Existen dos implementaciones: Coreografía, donde cada servicio escucha eventos y decide qué hacer (descentralizado, menor acoplamiento, pero difícil de depurar); y Orquestación, donde un Saga Orchestrator centralizado coordina los pasos enviando comandos a cada servicio (más fácil de razonar y depurar, pero introduce un componente adicional). El principal desafío es que las transacciones compensatorias deben ser idempotentes y pueden no restaurar exactamente el estado original. Es ideal para flujos de negocio como checkout de e-commerce o reservas de viajes con múltiples servicios involucrados.",
+    "keywords": [
+      "Saga",
+      "transacciones distribuidas",
+      "microservicios",
+      "coreografía",
+      "orquestación",
+      "transacciones compensatorias",
+      "consistencia eventual"
+    ],
+    "difficulty": "mid",
+    "category": "arquitectura"
+  },
+  {
+    "id": 78,
+    "question": "¿Cómo diseñarías un sistema altamente disponible con replicación de datos?",
+    "ideal_answer": "Diseñaría el sistema eliminando todos los single points of failure (SPOFs). Para la capa de base de datos: replicación primario-réplica (master-slave) con réplicas de lectura para distribuir carga, y failover automático a una réplica en caso de falla del primario usando herramientas como Patroni para PostgreSQL o RDS Multi-AZ. Para escrituras críticas, consideraría replicación síncrona en la misma región y asíncrona en la región secundaria. Multi-región activo-pasivo para disaster recovery con RTO y RPO definidos. En la capa de aplicación: múltiples instancias detrás de un load balancer, health checks automáticos y auto-scaling. Uso de caché distribuida (Redis Cluster) para reducir presión en la base de datos. Circuit breakers entre servicios para evitar cascadas de fallas. Estrategia de despliegue blue-green para actualizaciones sin downtime. Monitoreo continuo con alertas antes de que las métricas alcancen umbrales críticos y runbooks claros para operaciones.",
+    "keywords": [
+      "alta disponibilidad",
+      "replicación",
+      "failover",
+      "SPOF",
+      "multi-región",
+      "load balancer",
+      "disaster recovery"
+    ],
+    "difficulty": "mid",
+    "category": "arquitectura"
+  },
+  {
+    "id": 79,
+    "question": "¿Cómo diseñarías un sistema para procesar 1 millón de eventos por segundo?",
+    "ideal_answer": "Para este volumen, la arquitectura debe ser distribuida horizontalmente desde el diseño. Ingesta: usar Kafka como backbone de streaming con particionamiento adecuado (al menos tantas particiones como el máximo paralelismo deseado), aprovechando su capacidad de millones de mensajes por segundo con persistencia durable. Procesamiento: Apache Flink o Kafka Streams para procesamiento de streams en tiempo real con semántica exactly-once, escalando horizontalmente los consumer groups. Almacenamiento: separar write path de read path (CQRS). Para escrituras masivas, usar bases de datos columnar como ClickHouse, Apache Cassandra o TimescaleDB optimizadas para writes. Batch writes y buffer para reducir IOPS. Optimizaciones clave: serialización eficiente con Avro/Protobuf en lugar de JSON, compresión (LZ4 o Snappy), back-pressure para controlar flujo, idempotencia en procesamiento, y sharding por clave de partición lógica. Observabilidad con métricas de lag en cada etapa y alertas de degradación para detectar cuellos de botella rápidamente.",
+    "keywords": [
+      "escalabilidad",
+      "Kafka",
+      "Flink",
+      "streaming",
+      "procesamiento eventos",
+      "CQRS",
+      "particionamiento"
+    ],
+    "difficulty": "senior",
+    "category": "arquitectura"
+  },
+  {
+    "id": 80,
+    "question": "¿Qué es Domain-Driven Design (DDD) y cuáles son sus building blocks?",
+    "ideal_answer": "Domain-Driven Design es un enfoque de diseño de software que centra el desarrollo en el dominio del negocio y su lógica, promoviendo una colaboración estrecha entre expertos del dominio y desarrolladores mediante un Ubiquitous Language compartido. Sus building blocks tácticos son: Entities, objetos con identidad propia que persiste en el tiempo; Value Objects, objetos inmutables definidos por sus atributos sin identidad (ej: Money, Address); Aggregates, clusters de entidades con una raíz (Aggregate Root) que garantiza la consistencia e invariantes del grupo; Repositories, abstracción para persistir y recuperar aggregates; Domain Services, lógica de dominio que no pertenece naturalmente a ninguna entidad; Domain Events, representan hechos del dominio que han ocurrido; y Factories para crear objetos complejos. A nivel estratégico: Bounded Contexts definen límites donde un modelo tiene significado específico, y Context Maps describen las relaciones entre ellos. DDD es ideal para dominios complejos con lógica de negocio rica, no para aplicaciones CRUD simples.",
+    "keywords": [
+      "DDD",
+      "Domain-Driven Design",
+      "Aggregate",
+      "Bounded Context",
+      "Ubiquitous Language",
+      "Value Object",
+      "Domain Event"
+    ],
+    "difficulty": "senior",
+    "category": "arquitectura"
+  },
+  {
+    "id": 81,
+    "question": "¿Cómo migrarías un monolito a microservicios en producción?",
+    "ideal_answer": "La migración debe ser gradual y nunca un big bang rewrite. El patrón más recomendado es el Strangler Fig Pattern: construir nuevos microservicios en paralelo mientras el monolito sigue funcionando, y redirigir tráfico gradualmente usando un API Gateway como proxy. El proceso inicia identificando los bounded contexts del negocio mediante DDD para definir los límites de cada servicio futuro. Extraer primero servicios de bajo riesgo y alta independencia como notificaciones o reportes. Usar el patrón Database-per-Service, migrando la base de datos del dominio extraído. Durante la transición, el patrón Anti-corruption Layer evita que el modelo del nuevo servicio se contamine con el del monolito. Implementar feature flags para rollback rápido. Establecer contratos de API con contract testing (Pact) entre servicios. Invertir en observabilidad distribuida (distributed tracing con Jaeger/Zipkin) desde el inicio. Cada extracción va acompañada de métricas de éxito y la migración completa puede tomar meses o años.",
+    "keywords": [
+      "Strangler Fig",
+      "migración",
+      "microservicios",
+      "monolito",
+      "API Gateway",
+      "Database-per-Service",
+      "Anti-corruption Layer"
+    ],
+    "difficulty": "senior",
+    "category": "arquitectura"
+  },
+  {
+    "id": 82,
+    "question": "¿Cuál es la diferencia entre desarrollo nativo, híbrido y cross-platform?",
+    "ideal_answer": "El desarrollo nativo implica crear aplicaciones específicamente para una plataforma usando sus lenguajes y herramientas oficiales: Swift/Objective-C para iOS y Kotlin/Java para Android. Ofrece el mejor rendimiento, acceso completo a APIs del dispositivo y experiencia de usuario óptima, pero requiere mantener dos codebases separadas con equipos especializados. El desarrollo híbrido (Cordova, Ionic) envuelve una WebView con HTML, CSS y JavaScript dentro de una app nativa. Permite compartir casi todo el código pero con rendimiento inferior y experiencia poco nativa, ya que renderiza una web en un contenedor. El cross-platform (Flutter, React Native, Xamarin) compila o transpila a código nativo o casi nativo desde un único codebase. Flutter usa su propio motor de renderizado (Skia/Impeller) para máxima consistencia visual; React Native usa componentes nativos reales a través de un bridge. Ofrecen un balance entre productividad del equipo y experiencia de usuario cercana a nativa, siendo la opción más popular actualmente para equipos con presupuesto limitado.",
+    "keywords": [
+      "nativo",
+      "híbrido",
+      "cross-platform",
+      "Flutter",
+      "React Native",
+      "Cordova",
+      "Swift"
+    ],
+    "difficulty": "junior",
+    "category": "mobile"
+  },
+  {
+    "id": 83,
+    "question": "¿Qué es React Native y cuáles son sus ventajas sobre el desarrollo nativo?",
+    "ideal_answer": "React Native es un framework de Meta que permite desarrollar aplicaciones móviles para iOS y Android usando JavaScript y React, compilando a componentes de UI nativos reales en lugar de WebViews. A diferencia de un enfoque híbrido, los componentes se traducen a vistas nativas de la plataforma. Sus ventajas sobre el desarrollo nativo incluyen: un único codebase para ambas plataformas reduciendo costos de desarrollo hasta un 40-60%, reutilización de conocimiento de React para desarrolladores web, hot reloading para iteraciones rápidas, ecosistema npm enorme, y la posibilidad de compartir lógica de negocio con aplicaciones web. La nueva arquitectura (Fabric + JSI + TurboModules) elimina el bridge asíncrono anterior, mejorando notablemente el rendimiento y permitiendo comunicación síncrona entre JS y código nativo. La principal desventaja es que para funcionalidades muy específicas del dispositivo o animaciones muy complejas, puede ser necesario escribir módulos nativos en Swift/Kotlin, requiriendo conocimiento de ambas plataformas.",
+    "keywords": [
+      "React Native",
+      "JavaScript",
+      "componentes nativos",
+      "cross-platform",
+      "hot reloading",
+      "Fabric",
+      "bridge"
+    ],
+    "difficulty": "junior",
+    "category": "mobile"
+  },
+  {
+    "id": 84,
+    "question": "¿Cómo manejarías el estado global en una app React Native?",
+    "ideal_answer": "La elección de gestión de estado depende de la complejidad y necesidades de la app. Para estado del servidor (datos de API), React Query o TanStack Query es la solución más eficiente, manejando caché, sincronización en background, estados de carga y error, y revalidación automática. Para estado global del cliente (preferencias de usuario, autenticación, carrito), las opciones principales son: Zustand, que es ligero, simple y con mínimo boilerplate, ideal para la mayoría de casos; Redux Toolkit, más verbose pero con DevTools excelentes, ideal para equipos grandes con lógica compleja; y Jotai o Recoil para estado atómico. Para estado simple y poco frecuente, Context API de React es suficiente. La recomendación es separar claramente el estado del servidor del estado del cliente, evitando almacenar en estado global lo que puede ser local al componente. En React Native especialmente, es crítico manejar la persistencia con AsyncStorage o MMKV para mantener estado entre sesiones, integrado con redux-persist o el middleware propio de Zustand.",
+    "keywords": [
+      "estado global",
+      "React Native",
+      "Zustand",
+      "Redux Toolkit",
+      "React Query",
+      "Context API",
+      "persistencia"
+    ],
+    "difficulty": "mid",
+    "category": "mobile"
+  },
+  {
+    "id": 85,
+    "question": "¿Qué estrategias usarías para optimizar el rendimiento de una app móvil?",
+    "ideal_answer": "El rendimiento móvil se optimiza en varias dimensiones. Para React Native: usar el nuevo arquitectura (Fabric/JSI) y habilitar Hermes como motor JS. Optimizar listas con FlatList/FlashList usando getItemLayout, keyExtractor y windowSize adecuados. Evitar re-renders innecesarios con React.memo, useMemo y useCallback. Lazy loading de componentes y pantallas con React.lazy. Para animaciones fluidas a 60fps, usar Reanimated 2+ que corre en el UI thread. Reducir el tamaño del bundle con tree shaking, Code Splitting y análisis con Metro bundle analyzer. En general para apps móviles: optimizar imágenes (WebP, resoluciones adecuadas, caché con Fast Image). Implementar virtualization en listas largas. Reducir operaciones de red con caché agresivo y prefetching. Evitar trabajo innecesario en el hilo principal: operaciones intensivas de CPU en workers o módulos nativos. Perfilar con Flipper, Android Profiler y Xcode Instruments para detectar jank, memory leaks y JS thread blocking.",
+    "keywords": [
+      "rendimiento móvil",
+      "React Native",
+      "FlatList",
+      "Reanimated",
+      "Hermes",
+      "bundle size",
+      "Flipper"
+    ],
+    "difficulty": "mid",
+    "category": "mobile"
+  },
+  {
+    "id": 86,
+    "question": "¿Cómo diseñarías una app móvil offline-first?",
+    "ideal_answer": "Una app offline-first asume que la red puede no estar disponible y diseña la experiencia alrededor de los datos locales. La arquitectura se basa en una base de datos local como única fuente de verdad: SQLite con Drizzle/TypeORM, WatermelonDB para grandes volúmenes, o Realm para sincronización automática. El flujo es: la UI siempre lee del storage local (instantáneo), mientras que en background se sincroniza con el servidor. Los cambios del usuario se guardan localmente primero con un estado (pending/synced/conflict) y se sincronizan cuando hay conexión usando una cola de operaciones con retry automático. La parte más compleja es el manejo de conflictos cuando el mismo dato fue modificado en el dispositivo y el servidor: estrategias como last-write-wins, operational transformation (CRDTs) o resolución manual por el usuario. Detectar conectividad con NetInfo. Usar optimistic updates en la UI para feedback inmediato. Apollo Client con @offline o TanStack Query con persistQueryClient facilitan esto para datos de APIs. El principal desafío es el modelo mental y los casos edge de sincronización.",
+    "keywords": [
+      "offline-first",
+      "sincronización",
+      "SQLite",
+      "WatermelonDB",
+      "conflictos",
+      "CRDTs",
+      "optimistic updates"
+    ],
+    "difficulty": "senior",
+    "category": "mobile"
+  },
+  {
+    "id": 87,
+    "question": "¿Cuáles son los criterios para elegir entre Flutter, React Native y nativo?",
+    "ideal_answer": "La decisión debe basarse en múltiples factores. Equipo: si el equipo es principalmente web con conocimiento de JS/React, React Native reduce la curva de aprendizaje; si se prefiere un lenguaje tipado más estructurado, Flutter con Dart es excelente y su curva es razonable. Si hay equipos iOS y Android separados con experiencia nativa, el desarrollo nativo es óptimo. Rendimiento: Flutter tiene las mejores animaciones y consistencia visual cross-platform por su propio motor de renderizado; nativo es insuperable para casos extremos; React Native con nueva arquitectura es competitivo. Acceso a APIs nativas: nativo tiene acceso completo; Flutter y React Native requieren plugins o módulos nativos para funcionalidades específicas. Mantenimiento: Flutter y React Native reducen costos con un solo codebase; nativo duplica el esfuerzo pero elimina la deuda técnica de abstracciones. Time to market: cross-platform generalmente más rápido para MVPs. Ecosistema: React Native tiene más librerías maduras; Flutter crece rápidamente con soporte de Google. Para empresas medianas sin especialistas de plataforma, Flutter o React Native son frecuentemente la mejor decisión económica.",
+    "keywords": [
+      "Flutter",
+      "React Native",
+      "desarrollo nativo",
+      "criterios",
+      "rendimiento",
+      "equipo",
+      "time to market"
+    ],
+    "difficulty": "senior",
+    "category": "mobile"
+  },
+  {
+    "id": 88,
+    "question": "Eres tech lead y un junior desplegó a producción sin pasar los tests, el sistema cayó. ¿Cómo manejas la situación inmediata y qué proceso implementas para que no vuelva a pasar?",
+    "ideal_answer": "La prioridad número uno es restaurar el servicio, no buscar culpables. Inmediatamente haría rollback al último estado estable, verificaría que el sistema esté operativo y comunicaría el estado a stakeholders. Una vez estabilizado, con el junior haría un post-mortem blameless: el objetivo es entender qué falló en el sistema y proceso, no en la persona. El junior actuó dentro de las posibilidades que el sistema permitía, lo que significa que el sistema falló al no tener las protecciones necesarias. Para que no vuelva a ocurrir, implementaría: protección de rama main con branch protection rules que requieran pasar todos los checks de CI antes de merge; aprobación obligatoria de al menos un senior en PRs a producción; pipeline de CD que bloquee despliegue si los tests fallan; ambiente de staging obligatorio antes de producción. A nivel de cultura: documentación clara del proceso de deploy, runbooks actualizados, y una sesión de pair programming con el junior para reforzar las mejores prácticas, convirtiendo el incidente en una oportunidad de aprendizaje.",
+    "keywords": [
+      "incident response",
+      "rollback",
+      "post-mortem",
+      "blameless",
+      "branch protection",
+      "CI/CD",
+      "liderazgo técnico"
+    ],
+    "difficulty": "mid",
+    "category": "sistemas",
+    "type": "situational"
+  },
+  {
+    "id": 89,
+    "question": "Tienes una query SQL que tarda 30 segundos en producción afectando a usuarios. No puedes hacer downtime. ¿Por dónde empiezas y qué pasos sigues?",
+    "ideal_answer": "Primero evaluaría el impacto y si es crítico consideraría un feature flag para deshabilitar la funcionalidad mientras se investiga. Sin downtime, el proceso de diagnóstico comienza ejecutando EXPLAIN ANALYZE en la query para obtener el query plan y ver si hay full table scans, nested loops costosos o estimaciones incorrectas. Revisaría si faltan índices en columnas usadas en WHERE, JOIN y ORDER BY. Verificaría pg_stat_activity para ver si hay locks bloqueando o queries concurrentes lentas. Con el diagnóstico en mano, las optimizaciones más comunes son: crear índices nuevos (en PostgreSQL se puede con CREATE INDEX CONCURRENTLY sin bloquear writes), reescribir la query para evitar subqueries correlacionadas o N+1 patterns, usar CTEs o vistas materializadas para queries complejas, agregar hints de índice si el optimizador elige mal. Si la tabla es muy grande, evaluar particionamiento. Siempre testear la optimización en staging con datos de producción reales (anonimizados) y medir el tiempo antes y después. Monitorear pg_stat_statements para detectar las queries más costosas de forma proactiva en el futuro.",
+    "keywords": [
+      "optimización SQL",
+      "EXPLAIN ANALYZE",
+      "índices",
+      "query plan",
+      "CREATE INDEX CONCURRENTLY",
+      "pg_stat_activity",
+      "performance"
+    ],
+    "difficulty": "mid",
+    "category": "backend",
+    "type": "situational"
+  },
+  {
+    "id": 90,
+    "question": "Tu equipo de frontend y backend tienen un conflicto sobre el diseño de una API. Frontend quiere N endpoints específicos, backend quiere un endpoint genérico. ¿Cómo medias?",
+    "ideal_answer": "Primero escucharía a ambos lados para entender las motivaciones técnicas reales detrás de cada posición, no solo las preferencias. Frontend generalmente prefiere endpoints específicos (BFF pattern) porque reduce over-fetching y under-fetching, simplifica el código del cliente y permite evolucionar el contrato según las necesidades de cada pantalla. Backend prefiere endpoints genéricos por menor duplicación de código y mantenimiento más simple. La mediación busca una solución que satisfaga las necesidades reales de ambos. Evaluaría opciones técnicas que pueden resolver el conflicto: GraphQL permite que el frontend solicite exactamente los campos que necesita con un único endpoint flexible; el patrón BFF (Backend for Frontend) introduce una capa intermedia que agrega y adapta datos para cada cliente; o una API REST con query parameters para selección de campos (sparse fieldsets). El criterio de decisión sería basado en datos: volumen de llamadas, tamaño de payloads, frecuencia de cambios. También evaluaría el contexto del equipo: capacidad técnica, tiempo disponible. Documentaría la decisión y sus trade-offs con un Architecture Decision Record (ADR) para que quede registrada la razón.",
+    "keywords": [
+      "mediación técnica",
+      "BFF",
+      "GraphQL",
+      "diseño de API",
+      "trade-offs",
+      "ADR",
+      "conflicto de equipo"
+    ],
+    "difficulty": "senior",
+    "category": "sistemas",
+    "type": "situational"
+  },
+  {
+    "id": 91,
+    "question": "¿Qué problema de seguridad tiene este código y cómo lo corregirías?",
+    "ideal_answer": "El código tiene una vulnerabilidad crítica de SQL Injection. Al construir la query concatenando directamente el parámetro user_id con un f-string, un atacante podría pasar un valor como '1; DROP TABLE users; --' o '1 OR 1=1' para manipular la consulta y acceder a todos los registros, modificar datos o destruir la base de datos. La corrección es usar consultas parametrizadas (prepared statements), que separan el código SQL de los datos y evitan que el input del usuario sea interpretado como SQL. La versión corregida sería: query = 'SELECT * FROM users WHERE id = ?'; db.execute(query, (user_id,)).fetchone(). El driver de base de datos se encarga de escapar correctamente el valor. Adicionalmente, se recomienda validar que user_id sea del tipo esperado (entero), usar un ORM como SQLAlchemy que genera parametrized queries por defecto, aplicar principio de mínimo privilegio al usuario de base de datos, y nunca mostrar errores de SQL al cliente.",
+    "keywords": [
+      "SQL injection",
+      "prepared statements",
+      "consultas parametrizadas",
+      "seguridad",
+      "Python",
+      "vulnerabilidad",
+      "ORM"
+    ],
+    "difficulty": "junior",
+    "category": "seguridad",
+    "type": "code",
+    "code_snippet": "def get_user(user_id):\n    query = f\"SELECT * FROM users WHERE id = {user_id}\"\n    return db.execute(query).fetchone()"
+  },
+  {
+    "id": 92,
+    "question": "¿Qué problema tiene este código React y cómo lo corregirías?",
+    "ideal_answer": "El código tiene un memory leak. El useEffect inicia un intervalo con setInterval pero no retorna una función de cleanup para limpiarlo cuando el componente se desmonta. Cuando React desmonta el componente (por navegación, condicional, etc.), el intervalo sigue ejecutándose en background intentando actualizar el estado de un componente que ya no existe en el DOM. Esto genera el warning 'Can't perform a React state update on an unmounted component', consume memoria y CPU innecesariamente, y puede causar comportamiento inesperado. La corrección es retornar una función de cleanup que llame a clearInterval: useEffect(() => { const interval = setInterval(() => { setCount(c => c + 1); }, 1000); return () => clearInterval(interval); }, []). El array de dependencias vacío [] es correcto aquí ya que queremos que el efecto se ejecute solo una vez al montar. Este patrón aplica a cualquier suscripción, listener de eventos, o recurso asíncrono iniciado en useEffect.",
+    "keywords": [
+      "memory leak",
+      "useEffect",
+      "cleanup",
+      "clearInterval",
+      "React",
+      "ciclo de vida",
+      "desmontaje"
+    ],
+    "difficulty": "mid",
+    "category": "frontend",
+    "type": "code",
+    "code_snippet": "useEffect(() => {\n  const interval = setInterval(() => {\n    setCount(c => c + 1);\n  }, 1000);\n}, []);"
+  },
+  {
+    "id": 93,
+    "question": "¿Qué problema de performance tiene este código y cómo lo optimizarías?",
+    "ideal_answer": "El código tiene el problema clásico de N+1 queries. Por cada post en la lista, ejecuta una query adicional a la base de datos para obtener el autor (User.query.get(p.user_id)). Si hay 100 posts, se ejecutan 101 queries: 1 para obtener todos los posts y 100 para obtener cada autor. Esto escala de forma lineal y destruye el rendimiento con volúmenes reales de datos. La solución es cargar todos los datos necesarios en el menor número de queries posible. Con SQLAlchemy, la forma idiomática es usar eager loading con joinedload o selectinload: posts = Post.query.options(joinedload(Post.author)).all(), que genera un JOIN en una sola query. Alternativamente, una query manual con JOIN: db.session.query(Post, User).join(User, Post.user_id == User.id).all(). Otra opción es precargar los autores en un diccionario: user_ids = [p.user_id for p in posts]; users = {u.id: u for u in User.query.filter(User.id.in_(user_ids)).all()}, y luego hacer lookups en memoria. Los ORMs modernos tienen herramientas de detección de N+1 como el paquete sqlalchemy-query-counter para identificarlos en tests.",
+    "keywords": [
+      "N+1 queries",
+      "eager loading",
+      "joinedload",
+      "SQLAlchemy",
+      "performance",
+      "JOIN",
+      "optimización de base de datos"
+    ],
+    "difficulty": "mid",
+    "category": "backend",
+    "type": "code",
+    "code_snippet": "def get_posts_with_authors():\n    posts = Post.query.all()\n    return [{\n        'title': p.title,\n        'author': User.query.get(p.user_id).name\n    } for p in posts]"
+  }
+]

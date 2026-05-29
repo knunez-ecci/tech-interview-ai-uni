@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Historial – Tech Interview AI</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="/">Tech Interview AI</a>
+  <div class="navbar-links" style="display:flex;align-items:center;gap:1rem;">
+    <a href="/history" style="color:var(--accent);">Historial</a>
+    <span style="font-size:0.85rem;color:var(--text-muted);">{{ current_user.username }}</span>
+    <a href="/logout" style="color:var(--danger);font-size:0.85rem;">Salir</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="card">
+    <div class="card-header">
+      <span>📋</span>
+      <h2>Mi historial</h2>
+      <div style="margin-left:auto;">
+        <a href="/" class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem;">
+          + Nueva entrevista
+        </a>
+      </div>
+    </div>
+
+    {% if not evaluations %}
+    <p style="color:var(--text-muted);text-align:center;padding:2.5rem 0;">
+      Aún no tienes evaluaciones guardadas.<br>
+      <a href="/" style="color:var(--accent);margin-top:0.5rem;display:inline-block;">
+        ¡Practica tu primera entrevista!
+      </a>
+    </p>
+
+    {% else %}
+
+    {% set total = evaluations | length %}
+    {% set scores = evaluations | selectattr('score') | map(attribute='score') | list %}
+    {% set avg = (scores | sum / scores | length) | round(1) if scores else 0 %}
+
+    <div style="display:flex;gap:2rem;flex-wrap:wrap;padding-bottom:1.25rem;margin-bottom:1.25rem;border-bottom:1px solid var(--border);">
+      <div>
+        <div style="font-size:1.8rem;font-weight:800;color:var(--accent);">{{ total }}</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);">Evaluaciones</div>
+      </div>
+      <div>
+        <div style="font-size:1.8rem;font-weight:800;color:var(--accent2);">{{ avg }}</div>
+        <div style="font-size:0.78rem;color:var(--text-muted);">Score promedio</div>
+      </div>
+      <div>
+        <div style="font-size:1.8rem;font-weight:800;color:var(--success);">
+          {{ scores | select('ge', 7) | list | length }}
+        </div>
+        <div style="font-size:0.78rem;color:var(--text-muted);">Score ≥ 7</div>
+      </div>
+    </div>
+
+    <div class="history-list">
+      {% for ev in evaluations %}
+      {% if ev.score >= 8 %}{% set sc = "var(--success)" %}
+      {% elif ev.score >= 6 %}{% set sc = "var(--accent2)" %}
+      {% elif ev.score >= 4 %}{% set sc = "var(--warning)" %}
+      {% else %}{% set sc = "var(--danger)" %}{% endif %}
+
+      <div class="history-item">
+        <div class="history-score" style="border-color:{{ sc }};color:{{ sc }};">
+          {{ ev.score or "—" }}
+          <span style="font-size:0.55rem;color:var(--text-muted);">/10</span>
+        </div>
+        <div class="history-body">
+          <p class="history-question">{{ ev.question_text | truncate(110) }}</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.4rem;">
+            {% if ev.difficulty %}
+            <span class="badge badge-{{ ev.difficulty }}">{{ ev.difficulty }}</span>
+            {% endif %}
+            {% if ev.category %}
+            <span class="badge badge-default">{{ ev.category }}</span>
+            {% endif %}
+            {% if ev.quality_label %}
+            <span class="badge" style="background:rgba(108,99,255,0.1);color:var(--accent);">
+              {{ ev.quality_label }} · {{ ev.quality_percent | round(1) if ev.quality_percent else 0 }}%
+            </span>
+            {% endif %}
+          </div>
+        </div>
+        <div class="history-meta">
+          <span>{{ ev.created_at.strftime('%d/%m/%Y') }}</span>
+          <span style="color:var(--text-muted);font-size:0.75rem;">{{ ev.created_at.strftime('%H:%M') }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="btn-group" style="justify-content:center;margin-top:0.5rem;">
+    <a href="/" class="btn btn-primary" style="padding:0.75rem 2rem;">🏠 Inicio</a>
+    <a href="/interview/reset" class="btn btn-outline">🔄 Nueva entrevista</a>
+  </div>
+
+</div>
+</body>
+</html>
